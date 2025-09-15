@@ -1,0 +1,41 @@
+{
+  "@context": {
+    "biz": "http://business.example.org/ontology#"
+  },
+  "@graph": [
+    {
+      "@id": "http://business.example.org/resource/MichaelChen",
+      "biz:hasRole": "CTO and Co-founder"
+    },
+    {
+      "@id": "http://business.example.org/resource/DataSystemsCorp",
+      "biz:hasName": "DataSystems Corp"
+    },
+    {
+      "@id": "http://business.example.org/resource/GlobalTechSolutions",
+      "biz:basedIn": "London, UK",
+      "biz:hasName": "GlobalTech Solutions"
+    },
+    {
+      "@id": "http://business.example.org/resource/TechCorpInc",
+      "biz:basedIn": "San Francisco, California",
+      "biz:hasName": "TechCorp Inc.",
+      "biz:locatedIn": "Seattle, Washington",
+      "biz:partneredWith": {
+        "@id": "http://business.example.org/resource/GlobalTechSolutions"
+      }
+    },
+    {
+      "@id": "http://business.example.org/resource/RobertMartinez",
+      "biz:hasRole": "Chief Financial Officer"
+    },
+    {
+      "@id": "http://business.example.org/resource/LisaWong",
+      "biz:hasRole": "VP of Engineering"
+    },
+    {
+      "@id": "http://business.example.org/resource/SarahJohnson",
+      "biz:hasRole": "CEO and Co-founder"
+    }
+  ]
+}

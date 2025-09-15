@@ -1,0 +1,45 @@
+name: Example RDF Extraction Config
+description: Extract organization and person information from documents
+version: '1.0'
+extraction_questions:
+- id: org_name
+  question: What organizations are mentioned in the document?
+  description: Extract names of companies, institutions, or organizations
+  expected_type: string
+  constraints:
+  - Must be proper noun
+  - Full organization name
+- id: person_name
+  question: What people are mentioned with their roles?
+  description: Extract person names and their associated roles or titles
+  expected_type: object
+  constraints:
+  - Include full name
+  - Include job title if mentioned
+rdf_schema:
+  namespace: http://example.org/ontology#
+  prefix: ex
+  base_uri: http://example.org/resource/
+  predicates:
+    hasRole: Person has role
+    worksFor: Person works for organization
+    locatedIn: Entity is located in place
+    hasName: Entity has name
+  classes:
+    Person: A human being
+    Role: A job title or position
+    Organization: A company or institution
+  custom_vocabularies: {}
+output_format: turtle
+llm_settings:
+  base_url: http://localhost:8000
+  model: Qwen/Qwen2.5-32B-Instruct
+  temperature: 0.3
+  max_tokens: 4096
+  timeout: 120
+validation_rules:
+- require_valid_uri
+- require_known_predicates
+post_processing:
+  deduplicate: true
+  normalize_uris: true

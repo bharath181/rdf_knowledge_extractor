@@ -1,0 +1,73 @@
+name: "Company Information Extraction"
+description: "Extract company names, people, and relationships from business documents"
+version: "1.0"
+
+extraction_questions:
+  - id: "company_names"
+    question: "What companies or organizations are mentioned in the document?"
+    description: "Extract all company names, including subsidiaries and partners"
+    expected_type: "string"
+    constraints:
+      - "Must be proper noun"
+      - "Include full legal name if available"
+
+  - id: "people_roles"
+    question: "What people are mentioned along with their job titles or roles?"
+    description: "Extract person names and their associated positions"
+    expected_type: "object"
+    constraints:
+      - "Include full name"
+      - "Include job title or role"
+
+  - id: "business_relationships"
+    question: "What business relationships exist between entities?"
+    description: "Extract partnerships, acquisitions, investments, etc."
+    expected_type: "triple"
+    constraints:
+      - "Must specify relationship type"
+
+  - id: "locations"
+    question: "What locations are mentioned in relation to business operations?"
+    description: "Extract cities, countries, office locations"
+    expected_type: "string"
+    constraints:
+      - "Geographic locations only"
+
+rdf_schema:
+  namespace: "http://business.example.org/ontology#"
+  prefix: "biz"
+  base_uri: "http://business.example.org/resource/"
+  predicates:
+    hasName: "Entity has name"
+    hasRole: "Person has role or position"
+    worksFor: "Person works for organization"
+    locatedIn: "Entity is located in place"
+    partneredWith: "Organization has partnership with"
+    foundedBy: "Organization was founded by person"
+    hasEmployee: "Organization has employee"
+    basedIn: "Organization is based in location"
+    ceoOf: "Person is CEO of organization"
+    investedIn: "Organization invested in another"
+  classes:
+    Person: "A human being"
+    Organization: "A company or business entity"
+    Role: "A job title or position"
+    Location: "A geographical place"
+    Partnership: "A business partnership"
+
+output_format: "turtle"
+
+llm_settings:
+  base_url: "http://localhost:8000"
+  model: "Qwen/Qwen2.5-32B-Instruct"
+  temperature: 0.3
+  max_tokens: 4096
+  timeout: 120
+
+validation_rules:
+  - "require_valid_uri"
+  - "require_known_predicates"
+
+post_processing:
+  deduplicate: true
+  normalize_uris: true

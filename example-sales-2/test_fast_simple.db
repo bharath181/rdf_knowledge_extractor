@@ -1,0 +1,450 @@
+[
+  {
+    "subject": "http://sales.intelligence.org/resource/TechCorpIndustriesInc",
+    "predicate": "http://sales.intelligence.org/ontology#hasName",
+    "object": "TechCorp Industries Inc.",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/TechCorpIndustriesInc",
+    "predicate": "http://sales.intelligence.org/ontology#hasIndustry",
+    "object": "Enterprise Software",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/TechCorpIndustriesInc",
+    "predicate": "http://sales.intelligence.org/ontology#hasRevenue",
+    "object": "$500M-1B annually",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/TechCorpIndustriesInc",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "Jennifer Walsh",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/TechCorpIndustriesInc",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "Robert Martinez",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/TechCorpIndustriesInc",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "Sarah Chen",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/TechCorpIndustriesInc",
+    "predicate": "http://sales.intelligence.org/ontology#hasPainPoint",
+    "object": "Legacy ERP integration challenges",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/TechCorpIndustriesInc",
+    "predicate": "http://sales.intelligence.org/ontology#hasPainPoint",
+    "object": "data silos across departments",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/TechCorpIndustriesInc",
+    "predicate": "http://sales.intelligence.org/ontology#hasPainPoint",
+    "object": "manual reporting processes",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/TechCorpIndustriesInc",
+    "predicate": "http://sales.intelligence.org/ontology#hasRecentActivity",
+    "object": "Acquired DataSync Solutions for $50M (Sept 2024)",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/TechCorpIndustriesInc",
+    "predicate": "http://sales.intelligence.org/ontology#hasRecentActivity",
+    "object": "Series D funding $120M (July 2024)",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/GlobalFinanceCorp",
+    "predicate": "http://sales.intelligence.org/ontology#hasName",
+    "object": "GlobalFinance Corp",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/GlobalFinanceCorp",
+    "predicate": "http://sales.intelligence.org/ontology#hasIndustry",
+    "object": "Financial Services",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/GlobalFinanceCorp",
+    "predicate": "http://sales.intelligence.org/ontology#hasRevenue",
+    "object": "$1B-5B annually",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/GlobalFinanceCorp",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "Michael Rodriguez",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/GlobalFinanceCorp",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "Lisa Thompson",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/GlobalFinanceCorp",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "David Kim",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/GlobalFinanceCorp",
+    "predicate": "http://sales.intelligence.org/ontology#hasPainPoint",
+    "object": "Regulatory compliance complexity",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/GlobalFinanceCorp",
+    "predicate": "http://sales.intelligence.org/ontology#hasPainPoint",
+    "object": "customer data fragmentation",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/GlobalFinanceCorp",
+    "predicate": "http://sales.intelligence.org/ontology#hasPainPoint",
+    "object": "slow time-to-market",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/GlobalFinanceCorp",
+    "predicate": "http://sales.intelligence.org/ontology#hasRecentActivity",
+    "object": "Launched digital banking platform (Oct 2024)",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/GlobalFinanceCorp",
+    "predicate": "http://sales.intelligence.org/ontology#hasRecentActivity",
+    "object": "regulatory compliance update completed",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/StartupTechInnovations",
+    "predicate": "http://sales.intelligence.org/ontology#hasName",
+    "object": "StartupTech Innovations",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/StartupTechInnovations",
+    "predicate": "http://sales.intelligence.org/ontology#hasIndustry",
+    "object": "Technology Startup",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/StartupTechInnovations",
+    "predicate": "http://sales.intelligence.org/ontology#hasRevenue",
+    "object": "$50M-100M annually",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/StartupTechInnovations",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "Alex Chen",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/StartupTechInnovations",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "Maria Gonzalez",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/StartupTechInnovations",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "James Park",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/StartupTechInnovations",
+    "predicate": "http://sales.intelligence.org/ontology#hasPainPoint",
+    "object": "Scaling customer support",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/StartupTechInnovations",
+    "predicate": "http://sales.intelligence.org/ontology#hasPainPoint",
+    "object": "international compliance",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/StartupTechInnovations",
+    "predicate": "http://sales.intelligence.org/ontology#hasPainPoint",
+    "object": "data analytics maturity",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/StartupTechInnovations",
+    "predicate": "http://sales.intelligence.org/ontology#hasRecentActivity",
+    "object": "Series C funding $75M (Aug 2024)",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/StartupTechInnovations",
+    "predicate": "http://sales.intelligence.org/ontology#hasRecentActivity",
+    "object": "launched AI product suite",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/StartupTechInnovations",
+    "predicate": "http://sales.intelligence.org/ontology#hasRecentActivity",
+    "object": "expanded to European market",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/ManufacturingSolutionsLtd",
+    "predicate": "http://sales.intelligence.org/ontology#hasName",
+    "object": "Manufacturing Solutions Ltd",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/ManufacturingSolutionsLtd",
+    "predicate": "http://sales.intelligence.org/ontology#hasIndustry",
+    "object": "Manufacturing Technology",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/ManufacturingSolutionsLtd",
+    "predicate": "http://sales.intelligence.org/ontology#hasRevenue",
+    "object": "$200M-500M annually",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/ManufacturingSolutionsLtd",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "Patricia Williams",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/ManufacturingSolutionsLtd",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "Robert Johnson",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/ManufacturingSolutionsLtd",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "Susan Davis",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/ManufacturingSolutionsLtd",
+    "predicate": "http://sales.intelligence.org/ontology#hasPainPoint",
+    "object": "Supply chain visibility",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/ManufacturingSolutionsLtd",
+    "predicate": "http://sales.intelligence.org/ontology#hasPainPoint",
+    "object": "predictive maintenance needs",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/ManufacturingSolutionsLtd",
+    "predicate": "http://sales.intelligence.org/ontology#hasPainPoint",
+    "object": "workforce training",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/ManufacturingSolutionsLtd",
+    "predicate": "http://sales.intelligence.org/ontology#hasRecentActivity",
+    "object": "Opened new facility in Ohio (Sept 2024)",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/ManufacturingSolutionsLtd",
+    "predicate": "http://sales.intelligence.org/ontology#hasRecentActivity",
+    "object": "invested $25M in automation technology",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/HealthTechPartners",
+    "predicate": "http://sales.intelligence.org/ontology#hasName",
+    "object": "HealthTech Partners",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/HealthTechPartners",
+    "predicate": "http://sales.intelligence.org/ontology#hasIndustry",
+    "object": "Healthcare Technology",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/HealthTechPartners",
+    "predicate": "http://sales.intelligence.org/ontology#hasRevenue",
+    "object": "$100M-200M annually",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/HealthTechPartners",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "Dr. Sarah Martinez",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/HealthTechPartners",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "Kevin Brown",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/HealthTechPartners",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "Jennifer Taylor",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/HealthTechPartners",
+    "predicate": "http://sales.intelligence.org/ontology#hasPainPoint",
+    "object": "Patient data privacy compliance",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/HealthTechPartners",
+    "predicate": "http://sales.intelligence.org/ontology#hasPainPoint",
+    "object": "integration with hospital systems",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/HealthTechPartners",
+    "predicate": "http://sales.intelligence.org/ontology#hasPainPoint",
+    "object": "clinical trial data management",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/HealthTechPartners",
+    "predicate": "http://sales.intelligence.org/ontology#hasRecentActivity",
+    "object": "FDA approval for new medical device (Oct 2024)",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/HealthTechPartners",
+    "predicate": "http://sales.intelligence.org/ontology#hasRecentActivity",
+    "object": "partnership with major hospital network",
+    "confidence": 1.0,
+    "source": "example-sales-2/source-data/crm_company_export.txt",
+    "metadata": {}
+  }
+]

@@ -1,0 +1,48 @@
+name: "sales_intelligence_extractor"
+description: "Extract sales intelligence from CRM exports and LinkedIn data"
+version: "1.0.0"
+
+rdf_schema:
+  base_uri: "http://sales.intelligence.org/"
+  namespace: "http://sales.intelligence.org/ontology#"
+  prefix: "sales"
+  predicates:
+    hasName: "Company/person name"
+    hasIndustry: "Industry sector"
+    hasRevenue: "Annual revenue"
+    hasDecisionMaker: "Key decision maker"
+    hasPainPoint: "Business challenge"
+    hasRecentActivity: "Recent business activity"
+  classes:
+    Organization: "http://xmlns.com/foaf/0.1/Organization"
+    Person: "http://xmlns.com/foaf/0.1/Person"
+    DecisionMaker: "http://sales.intelligence.org/ontology#DecisionMaker"
+    Influencer: "http://sales.intelligence.org/ontology#Influencer"
+  custom_vocabularies:
+    foaf: "http://xmlns.com/foaf/0.1/"
+    schema: "https://schema.org/"
+    org: "http://www.w3.org/ns/org#"
+    dcterms: "http://purl.org/dc/terms/"
+
+extraction_questions:
+  - id: "business_intelligence"
+    question: "Extract all business intelligence including: company details (names, industries, revenue, employees), decision makers (names, titles, contact preferences), recent activities, pain points, technology stacks, and competitive intelligence."
+    expected_type: "comprehensive"
+
+output_format: "n-triples"
+
+post_processing:
+  deduplicate: true
+  confidence_threshold: 0.7
+
+validation_rules:
+  - "require_valid_uri"
+  - "require_known_predicates"
+
+llm_settings:
+  base_url: "http://localhost:8000"
+  api_key: null
+  model: "Qwen/Qwen2.5-32B-Instruct"
+  temperature: 0.1
+  max_tokens: 8000
+  timeout: 60

@@ -1,0 +1,94 @@
+<http://sales.intelligence.org/resource/TechCorpIndustriesInc> <http://sales.intelligence.org/ontology#hasName> "TechCorp Industries Inc." .
+<http://sales.intelligence.org/resource/TechCorpIndustriesInc> <http://sales.intelligence.org/ontology#hasIndustry> "Enterprise Software" .
+<http://sales.intelligence.org/resource/TechCorpIndustriesInc> <http://sales.intelligence.org/ontology#hasRevenue> "$500M-1B annually" .
+<http://sales.intelligence.org/resource/TechCorpIndustriesInc> <http://sales.intelligence.org/ontology#hasDecisionMaker> "Jennifer Walsh" .
+<http://sales.intelligence.org/resource/TechCorpIndustriesInc> <http://sales.intelligence.org/ontology#hasDecisionMaker> "Robert Martinez" .
+<http://sales.intelligence.org/resource/TechCorpIndustriesInc> <http://sales.intelligence.org/ontology#hasDecisionMaker> "Sarah Chen" .
+<http://sales.intelligence.org/resource/TechCorpIndustriesInc> <http://sales.intelligence.org/ontology#hasRecentActivity> "Acquired DataSync Solutions for $50M (Sept 2024)" .
+<http://sales.intelligence.org/resource/TechCorpIndustriesInc> <http://sales.intelligence.org/ontology#hasRecentActivity> "Series D funding $120M (July 2024)" .
+<http://sales.intelligence.org/resource/TechCorpIndustriesInc> <http://sales.intelligence.org/ontology#hasPainPoint> "Legacy ERP integration challenges" .
+<http://sales.intelligence.org/resource/TechCorpIndustriesInc> <http://sales.intelligence.org/ontology#hasPainPoint> "data silos across departments" .
+<http://sales.intelligence.org/resource/TechCorpIndustriesInc> <http://sales.intelligence.org/ontology#hasPainPoint> "manual reporting processes" .
+<http://sales.intelligence.org/resource/GlobalFinanceCorp> <http://sales.intelligence.org/ontology#hasName> "GlobalFinance Corp" .
+<http://sales.intelligence.org/resource/GlobalFinanceCorp> <http://sales.intelligence.org/ontology#hasIndustry> "Financial Services" .
+<http://sales.intelligence.org/resource/GlobalFinanceCorp> <http://sales.intelligence.org/ontology#hasRevenue> "$1B-5B annually" .
+<http://sales.intelligence.org/resource/GlobalFinanceCorp> <http://sales.intelligence.org/ontology#hasDecisionMaker> "Michael Rodriguez" .
+<http://sales.intelligence.org/resource/GlobalFinanceCorp> <http://sales.intelligence.org/ontology#hasDecisionMaker> "Lisa Thompson" .
+<http://sales.intelligence.org/resource/GlobalFinanceCorp> <http://sales.intelligence.org/ontology#hasDecisionMaker> "David Kim" .
+<http://sales.intelligence.org/resource/GlobalFinanceCorp> <http://sales.intelligence.org/ontology#hasRecentActivity> "Launched digital banking platform (Oct 2024)" .
+<http://sales.intelligence.org/resource/GlobalFinanceCorp> <http://sales.intelligence.org/ontology#hasRecentActivity> "regulatory compliance update completed" .
+<http://sales.intelligence.org/resource/GlobalFinanceCorp> <http://sales.intelligence.org/ontology#hasPainPoint> "Regulatory compliance complexity" .
+<http://sales.intelligence.org/resource/GlobalFinanceCorp> <http://sales.intelligence.org/ontology#hasPainPoint> "customer data fragmentation" .
+<http://sales.intelligence.org/resource/GlobalFinanceCorp> <http://sales.intelligence.org/ontology#hasPainPoint> "slow time-to-market" .
+<http://sales.intelligence.org/resource/StartupTechInnovations> <http://sales.intelligence.org/ontology#hasName> "StartupTech Innovations" .
+<http://sales.intelligence.org/resource/StartupTechInnovations> <http://sales.intelligence.org/ontology#hasIndustry> "Technology Startup" .
+<http://sales.intelligence.org/resource/StartupTechInnovations> <http://sales.intelligence.org/ontology#hasRevenue> "$50M-100M annually" .
+<http://sales.intelligence.org/resource/StartupTechInnovations> <http://sales.intelligence.org/ontology#hasDecisionMaker> "Alex Chen" .
+<http://sales.intelligence.org/resource/StartupTechInnovations> <http://sales.intelligence.org/ontology#hasDecisionMaker> "Maria Gonzalez" .
+<http://sales.intelligence.org/resource/StartupTechInnovations> <http://sales.intelligence.org/ontology#hasDecisionMaker> "James Park" .
+<http://sales.intelligence.org/resource/StartupTechInnovations> <http://sales.intelligence.org/ontology#hasRecentActivity> "Series C funding $75M (Aug 2024)" .
+<http://sales.intelligence.org/resource/StartupTechInnovations> <http://sales.intelligence.org/ontology#hasRecentActivity> "launched AI product suite" .
+<http://sales.intelligence.org/resource/StartupTechInnovations> <http://sales.intelligence.org/ontology#hasRecentActivity> "expanded to European market" .
+<http://sales.intelligence.org/resource/StartupTechInnovations> <http://sales.intelligence.org/ontology#hasPainPoint> "Scaling customer support" .
+<http://sales.intelligence.org/resource/StartupTechInnovations> <http://sales.intelligence.org/ontology#hasPainPoint> "international compliance" .
+<http://sales.intelligence.org/resource/StartupTechInnovations> <http://sales.intelligence.org/ontology#hasPainPoint> "data analytics maturity" .
+<http://sales.intelligence.org/resource/ManufacturingSolutionsLtd> <http://sales.intelligence.org/ontology#hasName> "Manufacturing Solutions Ltd" .
+<http://sales.intelligence.org/resource/ManufacturingSolutionsLtd> <http://sales.intelligence.org/ontology#hasIndustry> "Manufacturing Technology" .
+<http://sales.intelligence.org/resource/ManufacturingSolutionsLtd> <http://sales.intelligence.org/ontology#hasRevenue> "$200M-500M annually" .
+<http://sales.intelligence.org/resource/ManufacturingSolutionsLtd> <http://sales.intelligence.org/ontology#hasDecisionMaker> "Patricia Williams" .
+<http://sales.intelligence.org/resource/ManufacturingSolutionsLtd> <http://sales.intelligence.org/ontology#hasDecisionMaker> "Robert Johnson" .
+<http://sales.intelligence.org/resource/ManufacturingSolutionsLtd> <http://sales.intelligence.org/ontology#hasDecisionMaker> "Susan Davis" .
+<http://sales.intelligence.org/resource/ManufacturingSolutionsLtd> <http://sales.intelligence.org/ontology#hasRecentActivity> "Opened new facility in Ohio (Sept 2024)" .
+<http://sales.intelligence.org/resource/ManufacturingSolutionsLtd> <http://sales.intelligence.org/ontology#hasRecentActivity> "invested $25M in automation technology" .
+<http://sales.intelligence.org/resource/ManufacturingSolutionsLtd> <http://sales.intelligence.org/ontology#hasPainPoint> "Supply chain visibility" .
+<http://sales.intelligence.org/resource/ManufacturingSolutionsLtd> <http://sales.intelligence.org/ontology#hasPainPoint> "predictive maintenance needs" .
+<http://sales.intelligence.org/resource/ManufacturingSolutionsLtd> <http://sales.intelligence.org/ontology#hasPainPoint> "workforce training" .
+<http://sales.intelligence.org/resource/HealthTechPartners> <http://sales.intelligence.org/ontology#hasName> "HealthTech Partners" .
+<http://sales.intelligence.org/resource/HealthTechPartners> <http://sales.intelligence.org/ontology#hasIndustry> "Healthcare Technology" .
+<http://sales.intelligence.org/resource/HealthTechPartners> <http://sales.intelligence.org/ontology#hasRevenue> "$100M-200M annually" .
+<http://sales.intelligence.org/resource/HealthTechPartners> <http://sales.intelligence.org/ontology#hasDecisionMaker> "Dr. Sarah Martinez" .
+<http://sales.intelligence.org/resource/HealthTechPartners> <http://sales.intelligence.org/ontology#hasDecisionMaker> "Kevin Brown" .
+<http://sales.intelligence.org/resource/HealthTechPartners> <http://sales.intelligence.org/ontology#hasDecisionMaker> "Jennifer Taylor" .
+<http://sales.intelligence.org/resource/HealthTechPartners> <http://sales.intelligence.org/ontology#hasRecentActivity> "FDA approval for new medical device (Oct 2024)" .
+<http://sales.intelligence.org/resource/HealthTechPartners> <http://sales.intelligence.org/ontology#hasRecentActivity> "partnership with major hospital network" .
+<http://sales.intelligence.org/resource/HealthTechPartners> <http://sales.intelligence.org/ontology#hasPainPoint> "Patient data privacy compliance" .
+<http://sales.intelligence.org/resource/HealthTechPartners> <http://sales.intelligence.org/ontology#hasPainPoint> "integration with hospital systems" .
+<http://sales.intelligence.org/resource/HealthTechPartners> <http://sales.intelligence.org/ontology#hasPainPoint> "clinical trial data management" .
+<http://sales.intelligence.org/resource/TechCorpIndustriesInc> <http://sales.intelligence.org/ontology#hasRecentActivity> "Posted about Q3 record revenue (+45% YoY)" .
+<http://sales.intelligence.org/resource/TechCorpIndustriesInc> <http://sales.intelligence.org/ontology#hasRecentActivity> "Announced new AI research lab in Seattle" .
+<http://sales.intelligence.org/resource/TechCorpIndustriesInc> <http://sales.intelligence.org/ontology#hasRecentActivity> "CEO Jennifer Walsh featured in Forbes \"Tech Leaders to Watch\"" .
+<http://sales.intelligence.org/resource/TechCorpIndustriesInc> <http://sales.intelligence.org/ontology#hasDecisionMaker> <http://sales.intelligence.org/resource/JenniferWalsh> .
+<http://sales.intelligence.org/resource/JenniferWalsh> <http://sales.intelligence.org/ontology#hasName> "Jennifer Walsh" .
+<http://sales.intelligence.org/resource/TechCorpIndustriesInc> <http://sales.intelligence.org/ontology#hasDecisionMaker> <http://sales.intelligence.org/resource/RobertMartinez> .
+<http://sales.intelligence.org/resource/RobertMartinez> <http://sales.intelligence.org/ontology#hasName> "Robert Martinez" .
+<http://sales.intelligence.org/resource/TechCorpIndustriesInc> <http://sales.intelligence.org/ontology#hasPainPoint> "Need better insights from our data to drive decision-making" .
+<http://sales.intelligence.org/resource/GlobalFinanceCorp> <http://sales.intelligence.org/ontology#hasRecentActivity> "Announced $2B digital transformation initiative" .
+<http://sales.intelligence.org/resource/GlobalFinanceCorp> <http://sales.intelligence.org/ontology#hasRecentActivity> "Hired new Chief Digital Officer from JPMorgan Chase" .
+<http://sales.intelligence.org/resource/GlobalFinanceCorp> <http://sales.intelligence.org/ontology#hasDecisionMaker> <http://sales.intelligence.org/resource/MichaelRodriguez> .
+<http://sales.intelligence.org/resource/MichaelRodriguez> <http://sales.intelligence.org/ontology#hasName> "Michael Rodriguez" .
+<http://sales.intelligence.org/resource/GlobalFinanceCorp> <http://sales.intelligence.org/ontology#hasDecisionMaker> <http://sales.intelligence.org/resource/SandraLopez> .
+<http://sales.intelligence.org/resource/SandraLopez> <http://sales.intelligence.org/ontology#hasName> "Sandra Lopez" .
+<http://sales.intelligence.org/resource/StartupTechInnovations> <http://sales.intelligence.org/ontology#hasIndustry> "Technology" .
+<http://sales.intelligence.org/resource/StartupTechInnovations> <http://sales.intelligence.org/ontology#hasRecentActivity> "Series C: $75M led by Sequoia Capital" .
+<http://sales.intelligence.org/resource/StartupTechInnovations> <http://sales.intelligence.org/ontology#hasRecentActivity> "Customer growth: 150% YoY" .
+<http://sales.intelligence.org/resource/StartupTechInnovations> <http://sales.intelligence.org/ontology#hasDecisionMaker> <http://sales.intelligence.org/resource/AlexChen> .
+<http://sales.intelligence.org/resource/AlexChen> <http://sales.intelligence.org/ontology#hasName> "Alex Chen" .
+<http://sales.intelligence.org/resource/StartupTechInnovations> <http://sales.intelligence.org/ontology#hasDecisionMaker> <http://sales.intelligence.org/resource/MariaGonzalez> .
+<http://sales.intelligence.org/resource/MariaGonzalez> <http://sales.intelligence.org/ontology#hasName> "Maria Gonzalez" .
+<http://sales.intelligence.org/resource/StartupTechInnovations> <http://sales.intelligence.org/ontology#hasPainPoint> "Keeping up with customer demand" .
+<http://sales.intelligence.org/resource/StartupTechInnovations> <http://sales.intelligence.org/ontology#hasPainPoint> "Need better observability and analytics as we scale" .
+<http://sales.intelligence.org/resource/ManufacturingSolutionsLtd> <http://sales.intelligence.org/ontology#hasIndustry> "Manufacturing" .
+<http://sales.intelligence.org/resource/ManufacturingSolutionsLtd> <http://sales.intelligence.org/ontology#hasRecentActivity> "Investment in IoT sensors and automation" .
+<http://sales.intelligence.org/resource/ManufacturingSolutionsLtd> <http://sales.intelligence.org/ontology#hasDecisionMaker> <http://sales.intelligence.org/resource/PatriciaWilliams> .
+<http://sales.intelligence.org/resource/PatriciaWilliams> <http://sales.intelligence.org/ontology#hasName> "Patricia Williams" .
+<http://sales.intelligence.org/resource/ManufacturingSolutionsLtd> <http://sales.intelligence.org/ontology#hasDecisionMaker> <http://sales.intelligence.org/resource/RobertJohnson> .
+<http://sales.intelligence.org/resource/RobertJohnson> <http://sales.intelligence.org/ontology#hasName> "Robert Johnson" .
+<http://sales.intelligence.org/resource/ManufacturingSolutionsLtd> <http://sales.intelligence.org/ontology#hasPainPoint> "Disconnected systems across our 12 manufacturing sites" .
+<http://sales.intelligence.org/resource/HealthTechPartners> <http://sales.intelligence.org/ontology#hasIndustry> "Healthcare" .
+<http://sales.intelligence.org/resource/HealthTechPartners> <http://sales.intelligence.org/ontology#hasRecentActivity> "FDA approval for new diagnostic device" .
+<http://sales.intelligence.org/resource/HealthTechPartners> <http://sales.intelligence.org/ontology#hasRecentActivity> "Partnership with Mayo Clinic announced" .
+<http://sales.intelligence.org/resource/HealthTechPartners> <http://sales.intelligence.org/ontology#hasDecisionMaker> <http://sales.intelligence.org/resource/DrSarahMartinez> .
+<http://sales.intelligence.org/resource/DrSarahMartinez> <http://sales.intelligence.org/ontology#hasName> "Dr. Sarah Martinez" .
+<http://sales.intelligence.org/resource/HealthTechPartners> <http://sales.intelligence.org/ontology#hasDecisionMaker> <http://sales.intelligence.org/resource/KevinBrown> .
+<http://sales.intelligence.org/resource/KevinBrown> <http://sales.intelligence.org/ontology#hasName> "Kevin Brown" .
+<http://sales.intelligence.org/resource/HealthTechPartners> <http://sales.intelligence.org/ontology#hasPainPoint> "Healthcare data interoperability challenges" .

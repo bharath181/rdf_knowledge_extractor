@@ -1,0 +1,145 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix schema: <https://schema.org/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix si: <http://sales.intelligence.org/ontology#> .
+
+# Sales Intelligence Ontology Definition
+si: a owl:Ontology ;
+    rdfs:label "Sales Intelligence Ontology" ;
+    rdfs:comment "Ontology for capturing sales intelligence about companies, contacts, and opportunities" ;
+    owl:versionInfo "1.0" .
+
+# Classes
+si:Company a owl:Class ;
+    rdfs:label "Company" ;
+    rdfs:comment "A target company for sales activities" ;
+    rdfs:subClassOf foaf:Organization .
+
+si:DecisionMaker a owl:Class ;
+    rdfs:label "Decision Maker" ;
+    rdfs:comment "A person with decision-making authority in purchasing" ;
+    rdfs:subClassOf foaf:Person .
+
+si:Influencer a owl:Class ;
+    rdfs:label "Influencer" ;
+    rdfs:comment "A person who influences purchasing decisions" ;
+    rdfs:subClassOf foaf:Person .
+
+si:PainPoint a owl:Class ;
+    rdfs:label "Pain Point" ;
+    rdfs:comment "A business challenge or problem the company faces" .
+
+si:ContactEvent a owl:Class ;
+    rdfs:label "Contact Event" ;
+    rdfs:comment "An interaction with a company or person" .
+
+si:CompetitiveAdvantage a owl:Class ;
+    rdfs:label "Competitive Advantage" ;
+    rdfs:comment "An advantage over competitors" .
+
+si:TechnologyStack a owl:Class ;
+    rdfs:label "Technology Stack" ;
+    rdfs:comment "Technology products and services used by the company" .
+
+# Properties - Company Intelligence
+si:hasPriorityScore a owl:DatatypeProperty ;
+    rdfs:label "has priority score" ;
+    rdfs:domain si:Company ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "Priority score from 0-100" .
+
+si:hasRevenueRange a owl:DatatypeProperty ;
+    rdfs:label "has revenue range" ;
+    rdfs:domain si:Company ;
+    rdfs:range xsd:string .
+
+si:hasEmployeeCount a owl:DatatypeProperty ;
+    rdfs:label "has employee count" ;
+    rdfs:domain si:Company ;
+    rdfs:range xsd:integer .
+
+si:usesTechnology a owl:ObjectProperty ;
+    rdfs:label "uses technology" ;
+    rdfs:domain si:Company ;
+    rdfs:range si:TechnologyStack .
+
+si:hasRecentActivity a owl:ObjectProperty ;
+    rdfs:label "has recent activity" ;
+    rdfs:domain si:Company .
+
+si:hasPainPoint a owl:ObjectProperty ;
+    rdfs:label "has pain point" ;
+    rdfs:domain si:Company ;
+    rdfs:range si:PainPoint .
+
+# Properties - People
+si:hasContactPreference a owl:DatatypeProperty ;
+    rdfs:label "has contact preference" ;
+    rdfs:domain foaf:Person ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Preferred contact method: LinkedIn, Email, Phone" .
+
+si:hasInfluenceScore a owl:DatatypeProperty ;
+    rdfs:label "has influence score" ;
+    rdfs:domain si:Influencer ;
+    rdfs:range xsd:decimal ;
+    rdfs:comment "Percentage of decision influence" .
+
+si:hasRecentPost a owl:DatatypeProperty ;
+    rdfs:label "has recent post" ;
+    rdfs:domain foaf:Person ;
+    rdfs:range xsd:string .
+
+si:hasDepartment a owl:DatatypeProperty ;
+    rdfs:label "has department" ;
+    rdfs:domain foaf:Person ;
+    rdfs:range xsd:string .
+
+# Properties - Contact History
+si:hasContactEvent a owl:ObjectProperty ;
+    rdfs:label "has contact event" ;
+    rdfs:domain si:ContactEvent ;
+    rdfs:range si:Company .
+
+si:hasContactMethod a owl:DatatypeProperty ;
+    rdfs:label "has contact method" ;
+    rdfs:domain si:ContactEvent ;
+    rdfs:range xsd:string .
+
+si:hasResponseRate a owl:DatatypeProperty ;
+    rdfs:label "has response rate" ;
+    rdfs:domain si:Company ;
+    rdfs:range xsd:decimal .
+
+si:hasRelationshipTemperature a owl:DatatypeProperty ;
+    rdfs:label "has relationship temperature" ;
+    rdfs:domain si:Company ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Cold, Warm, or Hot" .
+
+si:hasContactNotes a owl:DatatypeProperty ;
+    rdfs:label "has contact notes" ;
+    rdfs:domain si:Company ;
+    rdfs:range xsd:string .
+
+# Properties - Competitive Intelligence
+si:hasCurrentSolution a owl:ObjectProperty ;
+    rdfs:label "has current solution" ;
+    rdfs:domain si:Company ;
+    rdfs:range foaf:Organization .
+
+si:hasContractRenewal a owl:DatatypeProperty ;
+    rdfs:label "has contract renewal" ;
+    rdfs:domain si:Company ;
+    rdfs:range xsd:date .
+
+si:hasCompetitiveAdvantage a owl:ObjectProperty ;
+    rdfs:label "has competitive advantage" ;
+    rdfs:domain si:Company ;
+    rdfs:range si:CompetitiveAdvantage .

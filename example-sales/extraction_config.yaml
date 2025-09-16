@@ -1,0 +1,253 @@
+name: "Sales Intelligence Extraction"
+description: "Extract comprehensive sales intelligence from source data and populate template using RDF/SPARQL"
+version: "1.0"
+
+# OpenAI/LLM Configuration
+llm:
+  model: "gpt-4"
+  temperature: 0.7
+  max_tokens: 2000
+
+# RDF Schema Configuration
+rdf_schema:
+  base_uri: "http://sales.intelligence.org/data/"
+  namespace: "http://sales.intelligence.org/ontology#"
+  ontology_file: "sales_intelligence_ontology.ttl"
+
+# Template Field Mapping
+template_fields:
+  company_name: "foaf:name"
+  priority_score: "si:hasPriorityScore"
+  industry: "schema:industry"
+  revenue: "si:hasRevenueRange"
+  employee_count: "si:hasEmployeeCount"
+  tech_stack: "si:usesTechnology"
+  recent_activity: "si:hasRecentActivity"
+  pain_points: "si:hasPainPoint"
+  decision_maker_name: "foaf:name"
+  decision_maker_title: "foaf:title"
+  decision_maker_linkedin: "foaf:account"
+  decision_maker_email: "foaf:mbox"
+  decision_maker_phone: "foaf:phone"
+  contact_preference: "si:hasContactPreference"
+  interests: "foaf:interest"
+  recent_posts: "si:hasRecentPost"
+  influencer_name: "foaf:name"
+  influencer_title: "foaf:title"
+  department: "si:hasDepartment"
+  influence_score: "si:hasInfluenceScore"
+  contact_count: "si:hasContactEvent"
+  last_contact: "dcterms:modified"
+  response_rate: "si:hasResponseRate"
+  relationship_temperature: "si:hasRelationshipTemperature"
+  contact_notes: "si:hasContactNotes"
+  competitor_names: "si:hasCurrentSolution"
+  contract_renewal: "si:hasContractRenewal"
+  competitive_advantages: "si:hasCompetitiveAdvantage"
+
+extraction_questions:
+- id: company_info
+  question: What is the complete company information including name, industry, size, and revenue?
+  description: Extract all company details and demographics
+  expected_type: object
+  constraints:
+  - Include legal name and any DBAs
+  - Include all financial metrics
+  - Include headquarters and office locations
+
+- id: priority_score
+  question: What is the sales priority score and account status?
+  description: Extract priority scoring and current deal status
+  expected_type: number
+  constraints:
+  - Score must be 0-100
+  - Include deal stage and potential value
+
+- id: technology_stack
+  question: What technologies, platforms, and tools does the company use?
+  description: Extract complete technology infrastructure
+  expected_type: list
+  constraints:
+  - Include cloud providers
+  - Include all software platforms
+  - Include development tools and languages
+
+- id: business_challenges
+  question: What are the specific business challenges and pain points?
+  description: Extract detailed pain points with business impact
+  expected_type: list
+  constraints:
+  - Include quantified impact where available
+  - Include urgency and timeline
+  - Map to our solution capabilities
+
+- id: decision_makers
+  question: Who are the key decision makers with their complete contact information?
+  description: Extract all executive and decision maker details
+  expected_type: object
+  constraints:
+  - Include name, title, email, phone, LinkedIn
+  - Include decision authority level
+  - Include communication preferences
+  - Include recent activities and interests
+
+- id: influencers
+  question: Who are the influencers and technical evaluators?
+  description: Extract stakeholder information and influence levels
+  expected_type: object
+  constraints:
+  - Include department and role
+  - Include influence percentage
+  - Include specific concerns or requirements
+
+- id: interaction_history
+  question: What is the complete history of interactions and engagement?
+  description: Extract all touchpoints and engagement metrics
+  expected_type: object
+  constraints:
+  - Include dates and types of interactions
+  - Include response rates and engagement scores
+  - Include POC or trial information
+
+- id: competitive_landscape
+  question: What competitive solutions are in use or being evaluated?
+  description: Extract competitor information and our positioning
+  expected_type: object
+  constraints:
+  - Include current vendors and contracts
+  - Include renewal dates and values
+  - Include competitors being evaluated
+  - Include our competitive advantages
+
+- id: linkedin_insights
+  question: What insights and triggers are available from LinkedIn activity?
+  description: Extract social selling signals and engagement opportunities
+  expected_type: object
+  constraints:
+  - Include recent posts and engagement
+  - Include connections and mutual contacts
+  - Include content interests and activity patterns
+
+- id: next_steps
+  question: What are the recommended next steps and action items?
+  description: Extract strategic actions and timeline
+  expected_type: list
+  constraints:
+  - Include specific dates and deadlines
+  - Include responsible parties
+  - Include success criteria
+
+rdf_schema:
+  namespace: http://sales.intelligence.com/ontology#
+  prefix: si
+  base_uri: http://sales.intelligence.com/resource/
+
+  imports:
+    foaf: http://xmlns.com/foaf/0.1/
+    org: http://www.w3.org/ns/org#
+    schema: https://schema.org/
+    vcard: http://www.w3.org/2006/vcard/ns#
+    dcterms: http://purl.org/dc/terms/
+    skos: http://www.w3.org/2004/02/skos/core#
+
+  predicates:
+    # Company predicates
+    si:hasPriorityScore: Company priority score (0-100)
+    si:hasAccountStatus: Current account status
+    si:hasDealStage: Current deal stage
+    si:hasPotentialValue: Potential deal value
+    si:hasCloseDate: Expected close date
+
+    # Technology predicates
+    si:usesTechnology: Technology in use
+    si:hasCloudProvider: Cloud infrastructure provider
+    si:hasCurrentVendor: Current vendor relationship
+    si:hasContractValue: Contract value
+    si:hasRenewalDate: Contract renewal date
+
+    # Challenge predicates
+    si:hasChallenge: Business challenge or pain point
+    si:hasImpact: Business impact of challenge
+    si:hasUrgency: Urgency level
+
+    # People predicates
+    si:hasDecisionMaker: Key decision maker
+    si:hasInfluencer: Key influencer
+    si:hasAuthority: Decision authority level
+    si:hasInfluenceScore: Influence percentage
+    si:hasCommunicationPreference: Preferred communication method
+    si:hasRecentActivity: Recent professional activity
+
+    # Engagement predicates
+    si:hasTouchpoint: Interaction touchpoint
+    si:hasEngagementScore: Engagement score
+    si:hasResponseRate: Response rate percentage
+    si:hasRelationshipStatus: Relationship temperature
+    si:hasLastContact: Last contact date
+
+    # Competition predicates
+    si:hasCompetitor: Competitor being evaluated
+    si:hasIncumbent: Current incumbent vendor
+    si:hasCompetitiveAdvantage: Our competitive advantage
+
+    # LinkedIn predicates
+    si:hasLinkedInProfile: LinkedIn profile URL
+    si:hasConnectionCount: Number of connections
+    si:hasEngagementRate: Social engagement rate
+    si:hasMutualConnection: Mutual connection
+    si:hasContentInterest: Content topic interest
+
+    # Standard predicates from imported ontologies
+    foaf:name: Name of person or organization
+    foaf:mbox: Email address
+    foaf:phone: Phone number
+    foaf:homepage: Website URL
+    org:memberOf: Organization membership
+    org:headOf: Head of department/organization
+    schema:employee: Employee of organization
+    schema:revenue: Annual revenue
+    schema:numberOfEmployees: Employee count
+    schema:industry: Industry classification
+    vcard:hasAddress: Physical address
+    dcterms:created: Creation date
+    dcterms:modified: Last modified date
+
+  classes:
+    # Core classes
+    si:Account: Sales account/opportunity
+    si:DecisionMaker: Person with purchasing authority
+    si:Influencer: Person influencing decisions
+    si:Champion: Internal advocate
+    si:Challenge: Business problem or pain point
+    si:Technology: Technology platform or tool
+    si:Competitor: Competing vendor or solution
+    si:Interaction: Sales interaction or touchpoint
+    si:LinkedInSignal: Social selling signal
+
+    # Standard classes
+    foaf:Organization: Company or organization
+    foaf:Person: Individual person
+    org:OrganizationalUnit: Department or division
+    schema:Corporation: Business corporation
+
+output_format: turtle
+
+llm_settings:
+  base_url: http://localhost:8000
+  model: Qwen/Qwen2.5-32B-Instruct
+  temperature: 0.1  # Low temperature for factual extraction
+  max_tokens: 16384  # Large context for detailed extraction
+  timeout: 180
+
+validation_rules:
+- require_valid_uri
+- require_known_predicates
+- validate_email_format
+- validate_url_format
+- validate_score_range
+
+post_processing:
+  deduplicate: true
+  normalize_uris: true
+  validate_foaf_constraints: true
+  enrich_with_inference: true

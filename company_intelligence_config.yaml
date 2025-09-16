@@ -1,0 +1,302 @@
+name: Company Intelligence Extraction Config
+description: Extract company intelligence data using FOAF, CCO, and industry-standard ontologies
+version: '2.0'
+
+extraction_questions:
+- id: company_name
+  question: What companies are mentioned in the document with their full legal names?
+  description: Extract exact company names as they appear officially
+  expected_type: string
+  constraints:
+  - Must be full legal company name
+  - Include Inc., LLC, Corp. etc.
+
+- id: priority_score
+  question: What is the sales priority score or potential value of each company (0-100)?
+  description: Extract or infer priority scores based on revenue, size, and strategic fit
+  expected_type: number
+  constraints:
+  - Must be between 0 and 100
+  - Consider revenue size, growth rate, and strategic alignment
+
+- id: industry
+  question: What industry or sector does each company operate in?
+  description: Extract the primary industry classification using NAICS or SIC codes if available
+  expected_type: string
+  constraints:
+  - Use standard industry classifications
+  - Include NAICS/SIC codes when available
+
+- id: revenue
+  question: What is the annual revenue or revenue range for each company?
+  description: Extract revenue figures or ranges
+  expected_type: string
+  constraints:
+  - Include currency (USD preferred)
+  - Can be exact figure or range
+
+- id: employee_count
+  question: How many employees does each company have?
+  description: Extract employee count or range
+  expected_type: number
+  constraints:
+  - Can be exact number or range
+  - Include location specifics if available
+
+- id: tech_stack
+  question: What technologies, platforms, or software does each company use?
+  description: Extract information about technology stack and tools
+  expected_type: string
+  constraints:
+  - Include CRM, ERP, cloud platforms
+  - Include programming languages and frameworks
+
+- id: recent_activity
+  question: What recent funding rounds, acquisitions, or major news involves each company?
+  description: Extract recent significant business events
+  expected_type: string
+  constraints:
+  - Focus on last 12 months
+  - Include dates when available
+
+- id: pain_points
+  question: What business challenges or pain points does each company face?
+  description: Extract or infer business challenges and needs
+  expected_type: string
+  constraints:
+  - Focus on problems your solution can address
+  - Include operational and strategic challenges
+
+- id: decision_makers
+  question: Who are the key decision makers at each company with their full names and contact details?
+  description: Extract names, titles, emails, and social profiles of executives
+  expected_type: object
+  constraints:
+  - Include C-suite and VP level
+  - Include email and LinkedIn profiles if mentioned
+  - Include phone numbers when available
+
+- id: influencers
+  question: Who are the influencers and stakeholders involved in purchasing decisions?
+  description: Extract information about people who influence buying decisions
+  expected_type: object
+  constraints:
+  - Include department heads
+  - Include technical evaluators
+  - Note their influence percentage if mentioned
+
+- id: contact_history
+  question: What is the history of interactions with each company?
+  description: Extract information about previous contacts, meetings, or communications
+  expected_type: object
+  constraints:
+  - Include dates and participants
+  - Include outcome or response
+  - Include communication methods used
+
+- id: current_solutions
+  question: What competitive solutions or vendors does each company currently use?
+  description: Extract information about incumbent vendors and solutions
+  expected_type: string
+  constraints:
+  - Include competitor names
+  - Include contract details if available
+
+- id: contract_renewal
+  question: When do existing contracts expire or come up for renewal?
+  description: Extract contract renewal dates and terms
+  expected_type: date
+  constraints:
+  - Include specific dates if available
+  - Include contract value if mentioned
+
+- id: competitive_advantage
+  question: What advantages does our solution have over the competition for this company?
+  description: Extract or infer competitive advantages relevant to the company
+  expected_type: string
+  constraints:
+  - Be specific to company's needs
+  - Include cost, features, or service advantages
+
+- id: headquarters_location
+  question: Where is each company headquartered?
+  description: Extract company headquarters address and location
+  expected_type: string
+  constraints:
+  - Include city, state/province, country
+  - Include full address if available
+
+- id: website
+  question: What is the company's website URL?
+  description: Extract the official company website
+  expected_type: url
+  constraints:
+  - Must be valid URL
+  - Primary corporate website preferred
+
+rdf_schema:
+  namespace: http://sales.intelligence.org/ontology#
+  prefix: sales
+  base_uri: http://sales.intelligence.org/resource/
+
+  # Import standard ontologies
+  imports:
+    foaf: http://xmlns.com/foaf/0.1/
+    cco: https://www.commoncoreontologies.org/
+    org: http://www.w3.org/ns/org#
+    schema: https://schema.org/
+    vcard: http://www.w3.org/2006/vcard/ns#
+    dcterms: http://purl.org/dc/terms/
+    skos: http://www.w3.org/2004/02/skos/core#
+
+  predicates:
+    # Using FOAF (Friend of a Friend) predicates for people
+    foaf:name: Person or organization name
+    foaf:firstName: Person's first name
+    foaf:lastName: Person's last name
+    foaf:title: Person's job title
+    foaf:mbox: Email address
+    foaf:homepage: Homepage or website
+    foaf:phone: Phone number
+    foaf:account: Online account (e.g., LinkedIn)
+    foaf:member: Organization membership
+    foaf:knows: Person knows another person
+    foaf:interest: Person's interests
+
+    # Using Organization Ontology
+    org:memberOf: Person is member of organization
+    org:headOf: Person heads organization/department
+    org:reportsTo: Person reports to another person
+    org:hasMember: Organization has member
+    org:hasSubOrganization: Parent-subsidiary relationship
+    org:purpose: Organization's purpose or mission
+
+    # Using VCard for contact information
+    vcard:hasEmail: Has email address
+    vcard:hasTelephone: Has telephone number
+    vcard:hasAddress: Has physical address
+    vcard:hasURL: Has URL/website
+
+    # Using Schema.org for business data
+    schema:employee: Organization employs person
+    schema:founder: Organization founder
+    schema:revenue: Annual revenue
+    schema:numberOfEmployees: Employee count
+    schema:industry: Industry classification
+    schema:competitor: Competitor organization
+    schema:customer: Customer organization
+    schema:vendor: Vendor/supplier organization
+
+    # Using Dublin Core for metadata
+    dcterms:created: Creation date
+    dcterms:modified: Last modified date
+    dcterms:description: Description
+
+    # Custom sales-specific predicates (extending CCO concepts)
+    sales:hasPriorityScore: Sales priority score (0-100)
+    sales:hasPainPoint: Business pain point or challenge
+    sales:useTechnology: Uses specific technology/platform
+    sales:hasRecentActivity: Recent business activity or news
+    sales:hasContractRenewal: Contract renewal date
+    sales:hasCompetitiveAdvantage: Our competitive advantage
+    sales:hasRelationshipTemperature: Relationship status (cold/warm/hot)
+    sales:hasResponseRate: Historical response rate percentage
+    sales:hasTouchpointCount: Number of touchpoints in period
+    sales:hasLastContactDate: Date of last contact
+    sales:hasContactNotes: Notes from contacts
+    sales:hasInfluenceScore: Decision influence percentage
+    sales:hasContactPreference: Preferred contact method
+    sales:hasRecentPost: Recent social media activity
+
+    # CCO-inspired predicates for agents and roles
+    cco:hasRole: Person has organizational role
+    cco:performsFunction: Agent performs function
+    cco:hasCapability: Agent has capability
+    cco:participatesIn: Participates in process/event
+    cco:hasQuality: Has quality or characteristic
+    cco:hasPart: Has part (for departments)
+    cco:locatedIn: Located in geographic region
+
+  classes:
+    # FOAF classes
+    foaf:Organization: An organization
+    foaf:Person: A person
+    foaf:Agent: An agent (person or organization)
+    foaf:Group: A group or department
+
+    # Organization Ontology classes
+    org:Organization: Formal organization
+    org:OrganizationalUnit: Department or division
+    org:Role: Organizational role
+
+    # Schema.org classes
+    schema:Corporation: Business corporation
+    schema:Person: Individual person
+    schema:ContactPoint: Contact information
+
+    # CCO-inspired classes
+    cco:Agent: Autonomous agent
+    cco:InformationBearingEntity: Document or data
+    cco:GeospatialRegion: Geographic location
+    cco:Process: Business process
+    cco:Function: Business function
+    cco:Quality: Quality or characteristic
+
+    # Custom sales classes
+    sales:DecisionMaker: Person with purchasing authority
+    sales:Influencer: Person influencing decisions
+    sales:Prospect: Prospective customer company
+    sales:Technology: Technology platform or tool
+    sales:PainPoint: Business challenge
+    sales:CompetitiveSolution: Competitor solution
+    sales:ContactEvent: Contact or interaction event
+    sales:OpportunityScore: Sales opportunity score
+
+  # SKOS concept schemes for controlled vocabularies
+  concept_schemes:
+    industries:
+      scheme_uri: http://sales.intelligence.org/schemes/industries#
+      concepts:
+      - Technology
+      - Healthcare
+      - Finance
+      - Manufacturing
+      - Retail
+      - Energy
+      - Telecommunications
+
+    relationship_temperature:
+      scheme_uri: http://sales.intelligence.org/schemes/relationship#
+      concepts:
+      - Cold
+      - Warm
+      - Hot
+
+    contact_methods:
+      scheme_uri: http://sales.intelligence.org/schemes/contact#
+      concepts:
+      - Email
+      - Phone
+      - LinkedIn
+      - InPerson
+      - WebConference
+
+output_format: turtle
+
+llm_settings:
+  base_url: http://localhost:8000
+  model: Qwen/Qwen2.5-32B-Instruct
+  temperature: 0.2
+  max_tokens: 8192
+  timeout: 180
+
+validation_rules:
+- require_valid_uri
+- require_known_predicates
+- validate_email_format
+- validate_url_format
+
+post_processing:
+  deduplicate: true
+  normalize_uris: true
+  validate_foaf_constraints: true

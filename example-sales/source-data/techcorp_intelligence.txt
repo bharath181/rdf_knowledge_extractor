@@ -1,0 +1,93 @@
+TechCorp Industries - Account Intelligence
+==========================================
+
+Company Information:
+- Legal Name: TechCorp Industries Inc.
+- Industry: Manufacturing Technology
+- Revenue Range: $200-500M
+- Employee Count: 3,500
+- Location: Detroit, Michigan
+- Priority Score: 92/100
+
+Technology Infrastructure:
+- ERP: SAP S/4HANA
+- Cloud Platform: Google Cloud Platform
+- Manufacturing: Siemens PLM, AutoCAD
+- Business Intelligence: Power BI
+- Communication: Microsoft Teams, Slack
+
+Recent Developments:
+- IPO filing submitted Q4 2023
+- $200M manufacturing facility expansion announced
+- Partnership with Tesla for EV components (Nov 2023)
+- Sustainability initiative: Carbon neutral by 2025
+
+Pain Points & Triggers:
+- Manufacturing data not integrated with business systems
+- Quality control reporting delays (manual processes)
+- Supplier chain visibility issues
+- Regulatory compliance reporting challenges
+- Need for predictive maintenance capabilities
+
+Leadership Team:
+1. Robert Martinez - CEO & Founder
+   - Email: r.martinez@techcorp.com
+   - LinkedIn: linkedin.com/in/robert-martinez-ceo
+   - Phone: +1-313-555-0198
+   - Contact Preference: Phone calls (morning preferred)
+   - Background: 25 years manufacturing, former Ford executive
+   - Interests: Industry 4.0, automation, workforce development
+   - Recent Activity: Keynote at Manufacturing Summit Detroit
+
+2. Jennifer Kim - CFO
+   - Email: j.kim@techcorp.com
+   - LinkedIn: linkedin.com/in/jennifer-kim-cfo
+   - Contact Preference: Email with calendar links
+   - Decision Authority: 95% for technology investments
+   - Interests: Financial analytics, cost optimization, ROI metrics
+
+Key Influencers:
+1. Dr. Ahmed Hassan - VP of Operations
+   - Department: Manufacturing Operations
+   - Title: VP of Operations & Quality
+   - Influence Level: 80%
+   - Technical Background: PhD Industrial Engineering
+   - Pain Points: Real-time quality monitoring, predictive analytics
+   - Previous Interactions: Attended our webinar on manufacturing analytics
+
+2. Maria Santos - IT Director
+   - Department: Information Technology
+   - Influence Level: 70%
+   - Title: Director of IT Infrastructure
+   - Concerns: System integration, data security, scalability
+   - Evaluation Criteria: API capabilities, cloud compatibility
+
+Engagement History:
+- Total Interactions: 8 (past 6 months)
+- Channel Breakdown: Email (5), Phone (2), In-person meeting (1)
+- Last Contact: 2024-01-28 by Sarah Chen (Account Executive)
+- Response Rate: 62%
+- Engagement Temperature: Hot
+- Pipeline Status: Technical evaluation phase
+- Budget: $500K allocated for analytics platform (FY2024)
+
+Sales Context:
+- RFP submitted December 2023
+- Technical demo completed January 2024
+- Security review in progress
+- Decision timeline: March 2024
+- Implementation target: Q2 2024
+
+Competitive Landscape:
+- Current Systems: SAP Analytics Cloud (primary)
+- Competing Vendors: Microsoft (Power BI), Tableau, Qlik
+- Incumbent Advantage: Deep SAP integration
+- Switching Triggers: Better manufacturing-specific analytics
+- Contract Timing: SAP contract renewal due June 2024
+
+Strategic Advantages:
+- Manufacturing industry expertise (vs Microsoft generic approach)
+- Pre-built connectors for Siemens PLM systems
+- Proven ROI with similar automotive suppliers
+- Local support team in Detroit metro area
+- Faster implementation timeline than SAP upgrade path

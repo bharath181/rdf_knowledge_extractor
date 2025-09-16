@@ -1,0 +1,80 @@
+ACME Corporation - Sales Intelligence Data
+==========================================
+
+Company Overview:
+- Company Name: ACME Corporation
+- Industry: Software & Technology
+- Revenue: $50-100M annually
+- Employees: 1,200
+- Headquarters: San Francisco, CA
+- Priority Score: 85/100
+
+Technology Stack:
+- CRM: Salesforce Enterprise
+- Cloud: AWS, Microsoft Azure
+- Development: Python, JavaScript, React
+- Data: PostgreSQL, MongoDB
+- Security: Okta, CrowdStrike
+
+Recent Activity:
+- Series C funding round completed: $75M (March 2024)
+- Acquired DataTech Solutions for $12M (January 2024)
+- Launched new AI product line (February 2024)
+- Expanded European operations with London office
+
+Business Challenges:
+- Legacy system integration issues causing data silos
+- Scaling customer support for rapid growth
+- Need for better real-time analytics and reporting
+- Compliance requirements for EU expansion
+
+Key Decision Makers:
+1. Sarah Johnson - CEO
+   - Email: sarah.johnson@acme.com
+   - LinkedIn: linkedin.com/in/sarah-johnson-ceo
+   - Phone: +1-555-0123
+   - Contact Preference: LinkedIn messaging
+   - Interests: AI/ML, sustainable technology, leadership
+   - Recent Activity: Posted about AI ethics on LinkedIn last week
+
+2. Michael Chen - CTO
+   - Email: michael.chen@acme.com
+   - LinkedIn: linkedin.com/in/michael-chen-cto
+   - Contact Preference: Email
+   - Department: Engineering
+   - Interests: Cloud architecture, DevOps, security
+   - Recent Activity: Spoke at CloudConf 2024 about microservices
+
+Influencers:
+1. David Rodriguez - VP Engineering
+   - Department: Engineering
+   - Influence Score: 75%
+   - Title: VP of Engineering
+   - Previous Interactions: Met at TechSummit 2023, expressed interest in APIs
+
+2. Lisa Wang - Head of Operations
+   - Department: Operations
+   - Influence Score: 60%
+   - Title: Head of Operations
+   - Previous Interactions: Demo session scheduled for next month
+
+Contact History:
+- Total Touchpoints (12mo): 15
+- Methods Used: Email (8), LinkedIn (4), Phone (3)
+- Last Contact: 2024-02-15 by James Wilson (Sales Rep)
+- Response Rate: 45%
+- Relationship Temperature: Warm
+- Notes: Interested in our analytics platform, budget approved for Q2
+
+Competitive Intelligence:
+- Current CRM: Salesforce (contract expires Dec 2024)
+- Analytics: Tableau (renewal March 2025)
+- Current Vendors: AWS, Salesforce, Tableau, Okta
+- Competitors Being Evaluated: Microsoft Power Platform, Snowflake
+- Contract Values: Salesforce ($240K/year), Tableau ($150K/year)
+
+Our Competitive Advantages:
+- Better API integration capabilities than Microsoft
+- More cost-effective than Snowflake for their use case
+- Superior real-time processing vs Tableau
+- Proven track record with similar fintech companies

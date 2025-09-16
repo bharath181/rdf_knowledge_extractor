@@ -1,0 +1,134 @@
+# SPARQL Queries for Company Intelligence Template Population
+
+# Query 1: Get Top 5 Companies by Priority Score
+query_top_companies:
+SELECT ?company ?name ?score ?industry
+WHERE {
+  ?company a foaf:Organization ;
+           foaf:name ?name ;
+           si:hasPriorityScore ?score .
+  OPTIONAL { ?company schema:industry ?industry }
+}
+ORDER BY DESC(?score)
+LIMIT 5
+
+# Query 2: Get Company Intelligence Data
+query_company_intelligence:
+SELECT ?company ?name ?revenue ?employees ?tech ?activity ?painpoint
+WHERE {
+  ?company a foaf:Organization ;
+           foaf:name ?name .
+  OPTIONAL { ?company si:hasRevenueRange ?revenue }
+  OPTIONAL { ?company si:hasEmployeeCount ?employees }
+  OPTIONAL { ?company si:usesTechnology ?tech }
+  OPTIONAL { ?company si:hasRecentActivity ?activity }
+  OPTIONAL { ?company si:hasPainPoint ?painpoint }
+}
+
+# Query 3: Get Decision Makers for a Company
+query_decision_makers:
+SELECT ?person ?name ?title ?email ?phone ?linkedin ?preference ?interests ?recent_activity
+WHERE {
+  ?person a si:DecisionMaker ;
+          foaf:name ?name ;
+          org:memberOf ?company .
+  ?company foaf:name "{COMPANY_NAME}" .
+
+  OPTIONAL { ?person foaf:title ?title }
+  OPTIONAL { ?person foaf:mbox ?email }
+  OPTIONAL { ?person foaf:phone ?phone }
+  OPTIONAL {
+    ?person foaf:account ?account .
+    FILTER(CONTAINS(STR(?account), "linkedin"))
+    BIND(?account AS ?linkedin)
+  }
+  OPTIONAL { ?person si:hasContactPreference ?preference }
+  OPTIONAL { ?person foaf:interest ?interests }
+  OPTIONAL { ?person si:hasRecentPost ?recent_activity }
+}
+
+# Query 4: Get Influencers for a Company
+query_influencers:
+SELECT ?person ?name ?title ?department ?influence_score ?interactions
+WHERE {
+  ?person a si:Influencer ;
+          foaf:name ?name ;
+          org:memberOf ?company .
+  ?company foaf:name "{COMPANY_NAME}" .
+
+  OPTIONAL { ?person foaf:title ?title }
+  OPTIONAL { ?person si:hasDepartment ?department }
+  OPTIONAL { ?person si:hasInfluenceScore ?influence_score }
+  OPTIONAL { ?person si:hasContactNotes ?interactions }
+}
+ORDER BY DESC(?influence_score)
+
+# Query 5: Get Contact History Summary
+query_contact_history:
+SELECT ?company ?name
+       (COUNT(?contact) AS ?touchpoints)
+       (MAX(?date) AS ?last_contact)
+       ?response_rate ?temperature ?notes
+WHERE {
+  ?company a foaf:Organization ;
+           foaf:name "{COMPANY_NAME}" .
+
+  OPTIONAL {
+    ?contact si:hasContactEvent ?company ;
+             dcterms:created ?date .
+  }
+
+  OPTIONAL { ?company si:hasResponseRate ?response_rate }
+  OPTIONAL { ?company si:hasRelationshipTemperature ?temperature }
+  OPTIONAL { ?company si:hasContactNotes ?notes }
+}
+GROUP BY ?company ?name ?response_rate ?temperature ?notes
+
+# Query 6: Get Contact Methods Breakdown
+query_contact_methods:
+SELECT ?company ?method (COUNT(?event) AS ?count)
+WHERE {
+  ?company foaf:name "{COMPANY_NAME}" .
+  ?event si:hasContactEvent ?company ;
+         si:hasContactMethod ?method .
+}
+GROUP BY ?company ?method
+
+# Query 7: Get Competitive Intelligence
+query_competitive_info:
+SELECT ?company ?name ?competitor ?solution ?renewal_date ?advantage
+WHERE {
+  ?company a foaf:Organization ;
+           foaf:name "{COMPANY_NAME}" .
+
+  OPTIONAL { ?company si:hasCurrentSolution ?solution }
+  OPTIONAL { ?company si:hasContractRenewal ?renewal_date }
+  OPTIONAL { ?company si:hasCompetitiveAdvantage ?advantage }
+}
+
+# Query 8: Get Complete Company Profile (CONSTRUCT query)
+query_company_profile:
+CONSTRUCT {
+  ?company ?p ?o .
+  ?person ?pp ?po .
+  ?contact ?cp ?co .
+}
+WHERE {
+  {
+    ?company a foaf:Organization ;
+             foaf:name "{COMPANY_NAME}" ;
+             ?p ?o .
+  }
+  UNION
+  {
+    ?person org:memberOf ?company ;
+            ?pp ?po .
+    ?company foaf:name "{COMPANY_NAME}" .
+  }
+  UNION
+  {
+    ?contact si:hasContactEvent ?company ;
+             ?cp ?co .
+    ?company foaf:name "{COMPANY_NAME}" .
+  }
+}

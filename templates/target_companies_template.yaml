@@ -1,0 +1,214 @@
+id: "target_companies_template"
+name: "Target Companies Sales Template"
+description: "Comprehensive sales template for top 5 target companies with detailed intelligence"
+template_type: "report"
+
+template_content: |
+  # Target Companies Sales Intelligence Report
+
+  {{#each top_companies}}
+  ## Company: {{name}}
+
+  **Priority Score**: {{priority_score}}/100 | **Industry**: {{industry}}
+
+  ### Company Intelligence
+  - **Revenue**: {{revenue}}
+  - **Employees**: {{employee_count}}
+  - **Technology Stack**: {{#format_list tech_stacks ", "}}{{/format_list}}
+  - **Recent Activity**: {{#format_list recent_activities "; "}}{{/format_list}}
+  - **Pain Points**: {{#format_list pain_points "; "}}{{/format_list}}
+
+  ### Key Personnel
+
+  #### Decision Makers
+  {{#each decision_makers}}
+  **{{name}}** - {{title}}
+  - Contact Preference: {{contact_preference}}
+  - Interests: {{interests}}
+  - Recent Activity: {{recent_activity}}
+  {{/each}}
+
+  #### Influencers
+  {{#each influencers}}
+  **{{name}}** - {{title}}
+  - Department: {{department}}
+  - Influence: {{influence_percentage}}%
+  - Interaction History: {{interaction_history}}
+  {{/each}}
+
+  ### Engagement Summary
+  - **Touchpoints (12mo)**: {{contact_count}} via {{contact_methods}}
+  - **Last Contact**: {{last_contact_date}} by {{last_contact_rep}}
+  - **Response Rate**: {{response_rate}}%
+  - **Relationship**: {{relationship_temperature}}
+  - **Notes**: {{contact_notes}}
+
+  ### Competitive Position
+  - **Current Solutions**: {{current_solutions}}
+  - **Contract Renewal**: {{contract_renewal_date}}
+  - **Our Advantage**: {{competitive_advantages}}
+
+  ---
+  {{/each}}
+
+data_queries:
+  # Top 5 companies by priority score
+  - id: "top_companies"
+    description: "Get top 5 companies by priority score"
+    sparql_query: |
+      PREFIX sales: <http://sales.intelligence.org/ontology#>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      PREFIX schema: <https://schema.org/>
+      SELECT ?company ?name ?priority_score ?industry ?revenue ?employee_count WHERE {
+        ?company a foaf:Organization ;
+                 foaf:name ?name ;
+                 sales:hasPriorityScore ?priority_score ;
+                 sales:hasIndustry ?industry ;
+                 sales:hasRevenue ?revenue ;
+                 sales:hasEmployeeCount ?employee_count .
+      }
+      ORDER BY DESC(?priority_score)
+      LIMIT 5
+    required: true
+
+  # Technology stack for each company
+  - id: "tech_stacks"
+    description: "Technology infrastructure for companies"
+    sparql_query: |
+      PREFIX sales: <http://sales.intelligence.org/ontology#>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      SELECT ?company_name ?tech_category ?technology WHERE {
+        ?company foaf:name ?company_name ;
+                 sales:usesTechnology ?tech .
+        ?tech sales:hasCategory ?tech_category ;
+              sales:hasTechnology ?technology .
+      }
+    required: false
+
+  # Recent activities and news
+  - id: "recent_activities"
+    description: "Recent funding, acquisitions, and business news"
+    sparql_query: |
+      PREFIX sales: <http://sales.intelligence.org/ontology#>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      PREFIX dcterms: <http://purl.org/dc/terms/>
+      SELECT ?company_name ?activity_type ?activity_description ?activity_date WHERE {
+        ?company foaf:name ?company_name ;
+                 sales:hasRecentActivity ?activity .
+        ?activity sales:hasActivityType ?activity_type ;
+                  sales:hasDescription ?activity_description ;
+                  dcterms:created ?activity_date .
+      }
+      ORDER BY DESC(?activity_date)
+    required: false
+
+  # Pain points and business challenges
+  - id: "pain_points"
+    description: "Business challenges and pain points"
+    sparql_query: |
+      PREFIX sales: <http://sales.intelligence.org/ontology#>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      SELECT ?company_name ?pain_point ?impact_level ?urgency WHERE {
+        ?company foaf:name ?company_name ;
+                 sales:hasPainPoint ?pain .
+        ?pain sales:hasChallenge ?pain_point ;
+              sales:hasImpact ?impact_level ;
+              sales:hasUrgency ?urgency .
+      }
+    required: false
+
+  # Decision makers with contact info
+  - id: "decision_makers"
+    description: "Key decision makers with profiles and preferences"
+    sparql_query: |
+      PREFIX sales: <http://sales.intelligence.org/ontology#>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      PREFIX org: <http://www.w3.org/ns/org#>
+      SELECT ?company_name ?name ?title ?linkedin_url ?contact_preference ?interests ?recent_activity WHERE {
+        ?person a sales:DecisionMaker ;
+                foaf:name ?name ;
+                foaf:title ?title ;
+                org:memberOf ?company .
+        ?company foaf:name ?company_name .
+        OPTIONAL { ?person foaf:account ?linkedin_url }
+        OPTIONAL { ?person sales:hasContactPreference ?contact_preference }
+        OPTIONAL { ?person foaf:interest ?interests }
+        OPTIONAL { ?person sales:hasRecentActivity ?recent_activity }
+      }
+    required: false
+
+  # Influencers and stakeholders
+  - id: "influencers"
+    description: "Key influencers and their decision influence"
+    sparql_query: |
+      PREFIX sales: <http://sales.intelligence.org/ontology#>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      PREFIX org: <http://www.w3.org/ns/org#>
+      SELECT ?company_name ?name ?title ?department ?influence_percentage ?interaction_history WHERE {
+        ?person a sales:Influencer ;
+                foaf:name ?name ;
+                foaf:title ?title ;
+                org:memberOf ?company .
+        ?company foaf:name ?company_name .
+        OPTIONAL { ?person sales:hasDepartment ?department }
+        OPTIONAL { ?person sales:hasInfluenceScore ?influence_percentage }
+        OPTIONAL { ?person sales:hasInteractionHistory ?interaction_history }
+      }
+    required: false
+
+  # Contact history and engagement metrics
+  - id: "contact_history"
+    description: "Historical contact summary and engagement metrics"
+    sparql_query: |
+      PREFIX sales: <http://sales.intelligence.org/ontology#>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      PREFIX dcterms: <http://purl.org/dc/terms/>
+      SELECT ?company_name ?contact_count ?contact_methods ?last_contact_date ?last_contact_rep ?response_rate ?relationship_temperature ?contact_notes WHERE {
+        ?company foaf:name ?company_name ;
+                 sales:hasTouchpointCount ?contact_count ;
+                 sales:hasContactMethods ?contact_methods ;
+                 sales:hasLastContactDate ?last_contact_date ;
+                 sales:hasLastContactRep ?last_contact_rep ;
+                 sales:hasResponseRate ?response_rate ;
+                 sales:hasRelationshipTemperature ?relationship_temperature ;
+                 sales:hasContactNotes ?contact_notes .
+      }
+    required: false
+
+  # Competitive intelligence
+  - id: "competitive_intelligence"
+    description: "Current solutions and competitive positioning"
+    sparql_query: |
+      PREFIX sales: <http://sales.intelligence.org/ontology#>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      SELECT ?company_name ?current_solutions ?contract_renewal_date ?competitive_advantages WHERE {
+        ?company foaf:name ?company_name ;
+                 sales:hasCurrentSolution ?current_solutions ;
+                 sales:hasContractRenewal ?contract_renewal_date ;
+                 sales:hasCompetitiveAdvantage ?competitive_advantages .
+      }
+    required: false
+
+llm_instructions: |
+  You are filling out a comprehensive sales template for target companies using data from our knowledge graph.
+
+  Instructions:
+  1. Structure the data for exactly 5 companies (top priority scores)
+  2. Group all related data by company
+  3. Format contact preferences as dropdown options: LinkedIn | Email | Phone
+  4. Format relationship temperature as: Cold | Warm | Hot
+  5. Combine multiple tech stack items into comma-separated list
+  6. Combine contact methods into readable format
+  7. Synthesize pain points into concise, actionable summaries
+  8. Ensure all field formatting matches the template structure
+  9. If data is missing for any field, use "[DATA NEEDED]"
+
+  Style: Professional, data-driven, sales-focused
+
+output_format: "markdown"
+
+post_processing:
+  enhance_with_llm: true
+  style_guide: "Professional sales intelligence report"
+  include_sources: false
+  validate_against_kg: true

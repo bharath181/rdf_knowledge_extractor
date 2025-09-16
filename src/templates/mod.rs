@@ -23,7 +23,7 @@ pub struct Template {
     pub post_processing: Option<PostProcessingConfig>,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "snake_case")]
 pub enum TemplateType {
     Report,
@@ -197,6 +197,11 @@ impl TemplateManager {
             }
         }
 
+        // For complex templates, aggregate and structure the data
+        if template.template_type == TemplateType::Report {
+            data_context = self.structure_complex_template_data(data_context)?;
+        }
+
         // Generate content using template
         let mut generated_content = self.handlebars.render_template(
             &template.template_content,
@@ -233,7 +238,7 @@ impl TemplateManager {
         })
     }
 
-    fn process_query_results(&self, results: SimpleSparqlResults, query: &DataQuery) -> Result<Value> {
+    fn process_query_results(&self, results: SimpleSparqlResults, _query: &DataQuery) -> Result<Value> {
         match results {
             SimpleSparqlResults::Solutions(solutions) => {
                 let mut processed_results = Vec::new();
@@ -306,6 +311,12 @@ impl TemplateManager {
 
     pub fn get_template(&self, template_id: &str) -> Option<&Template> {
         self.templates.get(template_id)
+    }
+
+    fn structure_complex_template_data(&self, data_context: Map<String, Value>) -> Result<Map<String, Value>> {
+        // This method structures raw SPARQL results for complex templates
+        // The LLM will handle the intelligent mapping and structuring
+        Ok(data_context)
     }
 }
 

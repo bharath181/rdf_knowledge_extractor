@@ -48,7 +48,12 @@ impl RdfTriple {
     }
 
     pub fn to_ntriple(&self) -> String {
-        format!("<{}> <{}> \"{}\" .", self.subject, self.predicate, self.object)
+        let object = if self.object.starts_with("http://") || self.object.starts_with("https://") {
+            format!("<{}>", self.object)
+        } else {
+            format!("\"{}\"", self.object.replace("\"", "\\\""))
+        };
+        format!("<{}> <{}> {} .", self.subject, self.predicate, object)
     }
 }
 

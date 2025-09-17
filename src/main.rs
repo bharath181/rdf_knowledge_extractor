@@ -213,6 +213,29 @@ enum Commands {
         #[arg(short, long, default_value = "templates")]
         output_dir: PathBuf,
     },
+
+    /// Demo: Complete workflow from source data to populated template
+    Demo {
+        /// Skip the extraction phase and use existing knowledge graph
+        #[arg(long)]
+        skip_extraction: bool,
+
+        /// Template file to populate
+        #[arg(short, long, default_value = "templates/sales_llm_template.yaml")]
+        template: PathBuf,
+
+        /// Output file for the populated template
+        #[arg(short, long, default_value = "populated_sales_report.md")]
+        output: PathBuf,
+
+        /// vLLM server URL
+        #[arg(long, default_value = "http://localhost:8000")]
+        server_url: String,
+
+        /// Model to use
+        #[arg(long, default_value = "Qwen/Qwen2.5-32B-Instruct")]
+        model: String,
+    },
 }
 
 #[derive(clap::ValueEnum, Clone)]
@@ -322,6 +345,15 @@ async fn main() -> Result<()> {
         }
         Commands::GenerateTemplates { output_dir } => {
             generate_templates_command(output_dir).await
+        }
+        Commands::Demo {
+            skip_extraction,
+            template,
+            output,
+            server_url,
+            model,
+        } => {
+            demo_command(skip_extraction, template, output, server_url, model).await
         }
     }
 }
@@ -1049,6 +1081,130 @@ fn display_results_as_turtle(results: SimpleSparqlResults) -> Result<()> {
             println!("# Boolean result: {}", result);
         }
     }
+
+    Ok(())
+}
+
+async fn demo_command(
+    skip_extraction: bool,
+    template_path: PathBuf,
+    output_path: PathBuf,
+    server_url: String,
+    model: String,
+) -> Result<()> {
+    println!("{}", " Running complete workflow demo...".bright_blue().bold());
+
+    // Step 1: Load or create knowledge graph
+    let kg_path = "example-sales-2/knowledge_graph.db";
+    let config_path = PathBuf::from("example-sales-2/sales_intelligence_config.yaml");
+
+    if !skip_extraction && !config_path.exists() {
+        return Err(anyhow::anyhow!(
+            "Configuration file not found. Run with --skip-extraction to use existing data."
+        ));
+    }
+
+    let config = if config_path.exists() {
+        Configuration::from_file(config_path)?
+    } else {
+        return Err(anyhow::anyhow!(
+            "Configuration file not found at {}. Please create it or use --skip-extraction",
+            config_path.display()
+        ));
+    };
+
+    // Initialize LLM client
+    let llm_client = VllmClient::new(
+        server_url,
+        None,
+        model,
+        0.3,
+        8000,
+        120,
+    )?;
+
+    // Check server health
+    println!(" Checking vLLM server health...");
+    if !llm_client.check_health().await? {
+        error!(" vLLM server is not responding");
+        return Err(anyhow::anyhow!("vLLM server health check failed"));
+    }
+    println!(" vLLM server is healthy");
+
+    // Initialize knowledge graph
+    let kg_config = KnowledgeGraphConfig {
+        storage_path: kg_path.to_string(),
+        ..Default::default()
+    };
+    let mut knowledge_graph = KnowledgeGraph::new(kg_config, config.rdf_schema.clone())?;
+
+    // Step 2: Extract from documents if not skipping
+    if !skip_extraction {
+        println!("\n{}", " PHASE 1: Extracting knowledge from documents...".bright_green().bold());
+
+        let source_files = vec![
+            "example-sales-2/source-data/crm_company_export.txt".to_string(),
+            "example-sales-2/source-data/linkedin_sales_navigator_export.txt".to_string(),
+        ];
+
+        let extractor = RdfExtractor::new(config.clone(), llm_client.clone());
+        let results = extractor.extract_from_multiple(source_files).await?;
+
+        // Add triples to knowledge graph
+        for result in results {
+            println!("  Extracted {} triples from {}", result.triples.len(), result.document_source);
+            knowledge_graph.add_triples(&result.triples)?;
+        }
+
+        // Export to N-Triples for inspection
+        knowledge_graph.export_to_file("demo_knowledge.nt", "ntriples")?;
+        println!(" Knowledge graph saved with {} total triples",
+                 knowledge_graph.get_statistics()?.total_triples);
+    } else {
+        println!(" Using existing knowledge graph at {}", kg_path);
+        let stats = knowledge_graph.get_statistics()?;
+        println!("  - Total triples: {}", stats.total_triples);
+        println!("  - Unique subjects: {}", stats.unique_subjects);
+        println!("  - Unique predicates: {}", stats.unique_predicates);
+    }
+
+    // Step 3: Load template and populate with LLM
+    println!("\n{}", " PHASE 2: Populating template with knowledge graph data...".bright_green().bold());
+
+    // Initialize template manager
+    let mut template_manager = TemplateManager::new(knowledge_graph, llm_client);
+
+    // Load the template
+    template_manager.load_template(&template_path.to_string_lossy())?;
+
+    // Read the raw template text
+    let template_text = std::fs::read_to_string(&template_path)?;
+
+    // Extract just the template content section
+    let template_yaml: serde_yaml::Value = serde_yaml::from_str(&template_text)?;
+    let template_content = template_yaml["template_content"]
+        .as_str()
+        .ok_or_else(|| anyhow::anyhow!("No template_content found in template"))?;
+
+    // Use the new LLM population method
+    let template_id = template_yaml["id"]
+        .as_str()
+        .ok_or_else(|| anyhow::anyhow!("No template id found"))?;
+
+    println!(" Sending template and knowledge graph data to LLM...");
+    let populated_content = template_manager
+        .generate_with_llm_population(template_id, template_content)
+        .await?;
+
+    // Step 4: Save the populated template
+    std::fs::write(&output_path, &populated_content)?;
+    println!("\n{} Sales report saved to: {}", "".green(), output_path.display());
+
+    // Show summary
+    println!("\n{}", " Demo Complete!".bright_green().bold());
+    println!("  1. Knowledge extracted from source documents");
+    println!("  2. Template populated with actual data via LLM");
+    println!("  3. Report saved to {}", output_path.display());
 
     Ok(())
 }

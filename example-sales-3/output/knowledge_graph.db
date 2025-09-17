@@ -1,0 +1,322 @@
+[
+  {
+    "subject": "http://sales.intelligence.org/resource/TechCorpIndustriesInc",
+    "predicate": "http://sales.intelligence.org/ontology#hasIndustry",
+    "object": "Enterprise Software",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/TechCorpIndustriesInc",
+    "predicate": "http://sales.intelligence.org/ontology#hasRecentActivity",
+    "object": "Posted about Q3 record revenue (+45% YoY)",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/TechCorpIndustriesInc",
+    "predicate": "http://sales.intelligence.org/ontology#hasRecentActivity",
+    "object": "Announced new AI research lab in Seattle",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/TechCorpIndustriesInc",
+    "predicate": "http://sales.intelligence.org/ontology#hasRecentActivity",
+    "object": "CEO Jennifer Walsh featured in Forbes \"Tech Leaders to Watch\"",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/TechCorpIndustriesInc",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "http://sales.intelligence.org/resource/JenniferWalsh",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/JenniferWalsh",
+    "predicate": "http://sales.intelligence.org/ontology#hasName",
+    "object": "Jennifer Walsh",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/TechCorpIndustriesInc",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "http://sales.intelligence.org/resource/RobertMartinez",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/RobertMartinez",
+    "predicate": "http://sales.intelligence.org/ontology#hasName",
+    "object": "Robert Martinez",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/TechCorpIndustriesInc",
+    "predicate": "http://sales.intelligence.org/ontology#hasPainPoint",
+    "object": "Need better insights from our data to drive decision-making",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/GlobalFinanceCorp",
+    "predicate": "http://sales.intelligence.org/ontology#hasIndustry",
+    "object": "Financial Services",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/GlobalFinanceCorp",
+    "predicate": "http://sales.intelligence.org/ontology#hasRecentActivity",
+    "object": "Announced $2B digital transformation initiative",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/GlobalFinanceCorp",
+    "predicate": "http://sales.intelligence.org/ontology#hasRecentActivity",
+    "object": "Hired new Chief Digital Officer from JPMorgan Chase",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/GlobalFinanceCorp",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "http://sales.intelligence.org/resource/MichaelRodriguez",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/MichaelRodriguez",
+    "predicate": "http://sales.intelligence.org/ontology#hasName",
+    "object": "Michael Rodriguez",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/GlobalFinanceCorp",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "http://sales.intelligence.org/resource/SandraLopez",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/SandraLopez",
+    "predicate": "http://sales.intelligence.org/ontology#hasName",
+    "object": "Sandra Lopez",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/StartupTechInnovations",
+    "predicate": "http://sales.intelligence.org/ontology#hasIndustry",
+    "object": "Technology",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/StartupTechInnovations",
+    "predicate": "http://sales.intelligence.org/ontology#hasRecentActivity",
+    "object": "Series C: $75M led by Sequoia Capital",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/StartupTechInnovations",
+    "predicate": "http://sales.intelligence.org/ontology#hasRecentActivity",
+    "object": "Customer growth: 150% YoY",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/StartupTechInnovations",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "http://sales.intelligence.org/resource/AlexChen",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/AlexChen",
+    "predicate": "http://sales.intelligence.org/ontology#hasName",
+    "object": "Alex Chen",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/StartupTechInnovations",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "http://sales.intelligence.org/resource/MariaGonzalez",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/MariaGonzalez",
+    "predicate": "http://sales.intelligence.org/ontology#hasName",
+    "object": "Maria Gonzalez",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/StartupTechInnovations",
+    "predicate": "http://sales.intelligence.org/ontology#hasPainPoint",
+    "object": "Keeping up with customer demand",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/StartupTechInnovations",
+    "predicate": "http://sales.intelligence.org/ontology#hasPainPoint",
+    "object": "Need better observability and analytics as we scale",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/ManufacturingSolutionsLtd",
+    "predicate": "http://sales.intelligence.org/ontology#hasIndustry",
+    "object": "Manufacturing",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/ManufacturingSolutionsLtd",
+    "predicate": "http://sales.intelligence.org/ontology#hasRecentActivity",
+    "object": "Investment in IoT sensors and automation",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/ManufacturingSolutionsLtd",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "http://sales.intelligence.org/resource/PatriciaWilliams",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/PatriciaWilliams",
+    "predicate": "http://sales.intelligence.org/ontology#hasName",
+    "object": "Patricia Williams",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/ManufacturingSolutionsLtd",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "http://sales.intelligence.org/resource/RobertJohnson",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/RobertJohnson",
+    "predicate": "http://sales.intelligence.org/ontology#hasName",
+    "object": "Robert Johnson",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/ManufacturingSolutionsLtd",
+    "predicate": "http://sales.intelligence.org/ontology#hasPainPoint",
+    "object": "Disconnected systems across our 12 manufacturing sites",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/HealthTechPartners",
+    "predicate": "http://sales.intelligence.org/ontology#hasIndustry",
+    "object": "Healthcare",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/HealthTechPartners",
+    "predicate": "http://sales.intelligence.org/ontology#hasRecentActivity",
+    "object": "FDA approval for new diagnostic device",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/HealthTechPartners",
+    "predicate": "http://sales.intelligence.org/ontology#hasRecentActivity",
+    "object": "Partnership with Mayo Clinic announced",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/HealthTechPartners",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "http://sales.intelligence.org/resource/DrSarahMartinez",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/DrSarahMartinez",
+    "predicate": "http://sales.intelligence.org/ontology#hasName",
+    "object": "Dr. Sarah Martinez",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/HealthTechPartners",
+    "predicate": "http://sales.intelligence.org/ontology#hasDecisionMaker",
+    "object": "http://sales.intelligence.org/resource/KevinBrown",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/KevinBrown",
+    "predicate": "http://sales.intelligence.org/ontology#hasName",
+    "object": "Kevin Brown",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  },
+  {
+    "subject": "http://sales.intelligence.org/resource/HealthTechPartners",
+    "predicate": "http://sales.intelligence.org/ontology#hasPainPoint",
+    "object": "Healthcare data interoperability challenges",
+    "confidence": 1.0,
+    "source": "/root/rdf_knowledge_extractor/example-sales-3/source-data/linkedin_sales_navigator_export.txt",
+    "metadata": {}
+  }
+]

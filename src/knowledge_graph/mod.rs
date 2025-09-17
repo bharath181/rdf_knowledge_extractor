@@ -9,6 +9,11 @@ use std::fs;
 use crate::config::RdfSchema;
 use crate::core::RdfTriple;
 
+// #[cfg(feature = "oxigraph")]
+// pub mod oxigraph_store;
+// #[cfg(feature = "oxigraph")]
+// pub use oxigraph_store::OxigraphKnowledgeGraph;
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum SimpleSparqlResults {
     Solutions(Vec<HashMap<String, String>>),

@@ -10,6 +10,9 @@ use tracing::{debug, info, warn};
 use crate::knowledge_graph::{KnowledgeGraph, SimpleSparqlResults};
 use crate::core::llm_client::VllmClient;
 
+pub mod llm_population;
+pub use llm_population::{TemplatePopulator, TemplateField, TemplatePopulationRequest};
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Template {
     pub id: String,
@@ -306,6 +309,48 @@ impl TemplateManager {
 
     pub fn get_template(&self, template_id: &str) -> Option<&Template> {
         self.templates.get(template_id)
+    }
+
+    /// Generate a document using LLM to populate the template with knowledge graph data
+    pub async fn generate_with_llm_population(
+        &self,
+        template_id: &str,
+        template_text: &str,
+    ) -> Result<String> {
+        let template = self.templates.get(template_id)
+            .ok_or_else(|| anyhow::anyhow!("Template not found: {}", template_id))?;
+
+        info!("Generating document with LLM population for template: {}", template.name);
+
+        // Execute all SPARQL queries to get data from knowledge graph
+        let mut query_results = HashMap::new();
+
+        for query in &template.data_queries {
+            debug!("Executing query '{}': {}", query.id, query.sparql_query);
+
+            match self.knowledge_graph.execute_sparql(&query.sparql_query) {
+                Ok(results) => {
+                    query_results.insert(query.id.clone(), results);
+                }
+                Err(e) => {
+                    if query.required {
+                        return Err(anyhow::anyhow!("Required query '{}' failed: {}", query.id, e));
+                    } else {
+                        warn!("Optional query '{}' failed: {}", query.id, e);
+                    }
+                }
+            }
+        }
+
+        // Use the TemplatePopulator to have LLM fill in the template
+        let populator = TemplatePopulator::new(self.llm_client.clone());
+        let populated_content = populator.populate_template(
+            template_text,
+            &query_results,
+            template.llm_instructions.as_deref(),
+        ).await?;
+
+        Ok(populated_content)
     }
 }
 

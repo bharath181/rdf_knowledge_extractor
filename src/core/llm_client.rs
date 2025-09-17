@@ -73,6 +73,7 @@ pub struct LlmResponse {
     pub response_time: Duration,
 }
 
+#[derive(Clone)]
 pub struct VllmClient {
     client: reqwest::Client,
     base_url: String,

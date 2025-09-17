@@ -1,6 +1,6 @@
 # RDF Knowledge Extractor - Current Status & Gaps
 
-## System Architecture
+## Current System Architecture (Reality)
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -35,7 +35,7 @@
 │   │  │  Subject   │  │ Predicate  │  │   Object   │             │     │
 │   │  └────────────┘  └────────────┘  └────────────┘             │     │
 │   │                                                               │     │
-│   │  Storage: JSON/SQLite    Query: Simplified SPARQL            │     │
+│   │  Storage: JSON/SQLite    Query: FAKE SPARQL (Pattern Match)  │     │
 │   │  Export: N-Triples, Turtle, JSON-LD                          │     │
 │   └──────────────────────────────────────────────────────────────┘     │
 │                                                                          │
@@ -43,13 +43,16 @@
                                 │
                                 ▼
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                      GENERATION LAYER                                    │
+│                   GENERATION LAYER (CURRENT REALITY)                     │
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                          │
 │   ┌──────────────┐        ┌──────────────┐        ┌──────────────┐     │
-│   │   Template   │        │   SPARQL     │        │     LLM      │     │
-│   │   Manager    │───────▶│   Executor   │───────▶│  Populator   │     │
-│   │              │        │              │        │              │     │
+│   │   Template   │        │  "SPARQL"    │        │     LLM      │     │
+│   │   Manager    │───────▶│  (IGNORED)   │───────▶│ Does All Work│     │
+│   │              │        │ Dumps All    │        │ - Parsing    │     │
+│   │              │        │ Triples      │        │ - Filtering  │     │
+│   │              │        │              │        │ - Grouping   │     │
+│   │              │        │              │        │ - Populating │     │
 │   └──────────────┘        └──────────────┘        └──────────────┘     │
 │                                                                          │
 └─────────────────────────────────────────────────────────────────────────┘
@@ -99,14 +102,62 @@
 
 ## Known Gaps & Limitations
 
-### 1. SPARQL Engine
-**Current State**: Simplified pattern matching
-**Gap**: Not a full SPARQL implementation
-**Impact**: Complex queries not supported
-**Solution**:
-- Oxigraph integration started but has build issues
-- Need to resolve RocksDB/C++ dependencies
-- Alternative: Could use a different SPARQL library
+### 1. SPARQL Engine (CRITICAL GAP)
+**Current State**: FAKE SPARQL - queries are mostly ignored, LLM does all work
+**Reality**:
+- SPARQL queries in templates are decorative/documentation
+- System dumps ALL triples to LLM regardless of query
+- LLM manually parses, filters, groups, and populates data
+**Impact**:
+- Massively inefficient (high token usage)
+- Not scalable (large knowledge graphs impossible)
+- LLM doing work that should be done by query engine
+- Complex analytical queries impossible
+**Root Cause**:
+```rust
+// Current "SPARQL" implementation
+} else {
+    // Generic fallback - return ALL triples as subject/predicate/object
+    for triple in &self.triples {
+        // ... dumps everything to LLM
+    }
+}
+```
+**Fix Required**: Implement real SPARQL engine (Oxigraph or alternative)
+
+#### Current vs Intended SPARQL Processing
+
+**What Currently Happens**:
+```yaml
+# Template defines this query:
+sparql_query: |
+  SELECT ?company ?name ?revenue WHERE {
+    ?company sales:hasName ?name ;
+             sales:hasRevenue ?revenue .
+  }
+  ORDER BY ?revenue DESC
+  LIMIT 5
+
+# But system actually does:
+1. Ignores the query completely
+2. Dumps all 40+ triples to LLM
+3. LLM manually finds companies, names, revenues
+4. LLM manually sorts and limits to 5
+5. LLM populates template
+```
+
+**What Should Happen**:
+```yaml
+# Same query, but system actually executes it:
+1. Parse SPARQL query properly
+2. Execute against knowledge graph
+3. Return structured result: [
+     {"company": "uri1", "name": "TechCorp", "revenue": "$500M"},
+     {"company": "uri2", "name": "GlobalFinance", "revenue": "$1B"}
+   ]
+4. Template engine populates with clean data
+5. LLM only enhances final output (optional)
+```
 
 ### 2. Oxigraph Integration
 **Current State**: Code written but disabled due to compilation errors
@@ -164,10 +215,10 @@ apt-get install build-essential clang libclang-dev libstdc++-dev
 - **Multi-Graph Support**: Single graph only
 - **Access Control**: No permissions system
 
-## Data Flow Diagram
+## Data Flow Diagram (Current Reality)
 
 ```
-Phase 1: Knowledge Extraction
+Phase 1: Knowledge Extraction (WORKING)
 ────────────────────────────────────────────────────────────────
 
 Document Input          LLM Processing           Knowledge Storage
@@ -188,24 +239,32 @@ Document Input          LLM Processing           Knowledge Storage
                        Extract Rules            (JSON/N-Triples)
 
 
-Phase 2: Template Population
+Phase 2: Template Population (BROKEN SPARQL)
 ────────────────────────────────────────────────────────────────
 
-Knowledge Query         LLM Population           Report Output
-───────────────        ───────────────          ─────────────
+Knowledge Dump          LLM Does Everything      Report Output
+──────────────         ─────────────────────    ─────────────
 
-┌──────────────┐       ┌─────────────┐          ┌──────────────┐
-│              │       │             │          │              │
-│  Knowledge   │       │             │          │   Markdown   │
-│    Graph     │──────▶│   vLLM      │─────────▶│   Report     │
-│              │       │   Server    │          │              │
-│  SPARQL      │       │             │          │  Populated   │
-│  Queries     │       │  Template + │          │   Fields     │
-│              │       │    Data     │          │              │
-└──────────────┘       └─────────────┘          └──────────────┘
-       │                      │                         │
-  Execute Queries      Fill Placeholders          Save to File
-  Return Triples       Generate Content         sales_report.md
+┌──────────────┐       ┌─────────────────────┐  ┌──────────────┐
+│              │       │                     │  │              │
+│  Knowledge   │       │       vLLM          │  │   Markdown   │
+│    Graph     │──────▶│     Server          │─▶│   Report     │
+│              │       │                     │  │              │
+│ "SPARQL"     │       │ LLM Intelligence:   │  │  Populated   │
+│ (Ignored)    │       │ - Parse all triples │  │   Fields     │
+│ Dump ALL     │       │ - Group by company  │  │              │
+│ Triples      │       │ - Map to fields     │  │              │
+│              │       │ - Fill template     │  │              │
+└──────────────┘       └─────────────────────┘  └──────────────┘
+       │                         │                       │
+   Fake "Query"        Manual Data Processing      Save to File
+   Return Everything   LLM Does All Work        sales_report.md
+
+
+MAJOR GAP: No Real SPARQL Engine
+────────────────────────────────────────────────────────────────
+Current: Template + ALL Raw Triples → LLM → Populated Report
+Should:  Template + SPARQL Queries → Query Engine → Structured Data → Template Engine
 ```
 
 ## Quick Fixes Needed
@@ -275,17 +334,52 @@ chmod +x *.sh
 - CMake (for RocksDB)
 - Additional ~500MB disk space for dependencies
 
+## LLM-Centric vs Proper SPARQL Architecture
+
+### Current LLM-Centric Approach (Working but Inefficient)
+
+**Advantages**:
+- Works without complex SPARQL engine
+- LLM handles data interpretation intelligently
+- Flexible with any template structure
+- Robust against malformed queries
+
+**Disadvantages**:
+- Massively inefficient token usage
+- Not scalable to large knowledge graphs
+- Complex analytical queries impossible
+- High latency and cost per report
+
+### Proper SPARQL-Based Approach (Target Architecture)
+
+**How it should work**:
+```
+Template Queries → SPARQL Engine → Structured Data → Template Engine → Report
+                                                            ↑
+                                                    LLM enhances here only
+```
+
+**Benefits**:
+- Efficient: Only relevant data extracted
+- Scalable: Works with large knowledge graphs
+- Fast: Query engine faster than LLM parsing
+- Powerful: Complex analytics possible
+- Cost-effective: Minimal LLM token usage
+
+**Implementation Path**:
+1. Fix Oxigraph compilation issues
+2. Replace fake SPARQL with real engine
+3. Update templates to use structured data
+4. LLM only for final content enhancement
+
 ## Conclusion
 
-The core workflow is **fully functional**:
-- Extract knowledge from documents
-- Store in knowledge graph
-- Query and populate templates
-- Generate professional reports
+The core workflow is **functionally complete** but **architecturally inefficient**:
+- Phase 1 (Extraction): Proper implementation
+- Phase 2 (Population): **LLM doing query engine's job**
 
-Main gaps are in:
-- Full SPARQL support (fixable)
-- Some template field types (minor)
-- Advanced features (nice-to-have)
+**Main Gap**: The SPARQL query layer is fake - LLM is compensating for missing query engine functionality.
 
-The system successfully demonstrates the complete pipeline from unstructured documents to structured reports via knowledge graphs and LLM intelligence.
+**Priority Fix**: Implement real SPARQL processing to make the system efficient and scalable.
+
+The current approach demonstrates the concept but won't scale beyond small knowledge graphs due to token limitations.

@@ -1,0 +1,229 @@
+id: "sales_target_companies"
+name: "Sales Target Companies Report"
+description: "Comprehensive report on target companies with decision makers and competitive intelligence"
+template_type: report
+output_format: markdown
+
+data_queries:
+  - id: "top_companies"
+    description: "Get top 5 target companies with scores"
+    required: true
+    sparql_query: |
+      PREFIX sales: <http://sales.intelligence.org/ontology#>
+      SELECT ?company ?name ?score ?industry ?revenue ?employees
+      WHERE {
+        ?company a sales:Organization ;
+                 sales:hasName ?name ;
+                 sales:hasPriorityScore ?score ;
+                 sales:hasIndustry ?industry .
+        OPTIONAL { ?company sales:hasRevenue ?revenue }
+        OPTIONAL { ?company sales:hasEmployeeCount ?employees }
+      }
+      ORDER BY DESC(?score)
+      LIMIT 5
+
+  - id: "decision_makers"
+    description: "Get decision makers for each company"
+    required: true
+    sparql_query: |
+      PREFIX sales: <http://sales.intelligence.org/ontology#>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      SELECT ?company ?companyName ?personName ?title ?linkedin ?contactPref ?interests ?recentActivity
+      WHERE {
+        ?company a sales:Organization ;
+                 sales:hasName ?companyName ;
+                 sales:hasDecisionMaker ?person .
+        ?person a sales:DecisionMaker ;
+                foaf:name ?personName ;
+                sales:hasTitle ?title .
+        OPTIONAL { ?person sales:hasLinkedIn ?linkedin }
+        OPTIONAL { ?person sales:hasContactPreference ?contactPref }
+        OPTIONAL { ?person sales:hasInterests ?interests }
+        OPTIONAL { ?person sales:hasRecentActivity ?recentActivity }
+      }
+
+  - id: "influencers"
+    description: "Get influencers for each company"
+    required: false
+    sparql_query: |
+      PREFIX sales: <http://sales.intelligence.org/ontology#>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+      SELECT ?company ?companyName ?influencerName ?title ?department ?influence ?interactions
+      WHERE {
+        ?company a sales:Organization ;
+                 sales:hasName ?companyName ;
+                 sales:hasInfluencer ?influencer .
+        ?influencer a sales:Influencer ;
+                    foaf:name ?influencerName ;
+                    sales:hasTitle ?title .
+        OPTIONAL { ?influencer sales:hasDepartment ?department }
+        OPTIONAL { ?influencer sales:hasInfluenceScore ?influence }
+        OPTIONAL { ?influencer sales:hasPreviousInteractions ?interactions }
+      }
+
+  - id: "pain_points"
+    description: "Get pain points and triggers for companies"
+    required: true
+    sparql_query: |
+      PREFIX sales: <http://sales.intelligence.org/ontology#>
+      SELECT ?company ?companyName ?painPoint ?techStack ?recentActivity
+      WHERE {
+        ?company a sales:Organization ;
+                 sales:hasName ?companyName .
+        OPTIONAL { ?company sales:hasPainPoint ?painPoint }
+        OPTIONAL { ?company sales:hasTechStack ?techStack }
+        OPTIONAL { ?company sales:hasRecentActivity ?recentActivity }
+      }
+
+  - id: "contact_history"
+    description: "Get historical contact information"
+    required: false
+    sparql_query: |
+      PREFIX sales: <http://sales.intelligence.org/ontology#>
+      PREFIX dcterms: <http://purl.org/dc/terms/>
+      SELECT ?company ?companyName ?touchpoints ?lastContact ?salesRep ?responseRate ?notes ?temperature
+      WHERE {
+        ?company a sales:Organization ;
+                 sales:hasName ?companyName .
+        OPTIONAL { ?company sales:hasTouchpointCount ?touchpoints }
+        OPTIONAL { ?company sales:hasLastContactDate ?lastContact }
+        OPTIONAL { ?company sales:hasLastContactBy ?salesRep }
+        OPTIONAL { ?company sales:hasResponseRate ?responseRate }
+        OPTIONAL { ?company sales:hasContactNotes ?notes }
+        OPTIONAL { ?company sales:hasRelationshipTemp ?temperature }
+      }
+
+  - id: "competitive_info"
+    description: "Get competitive intelligence"
+    required: false
+    sparql_query: |
+      PREFIX sales: <http://sales.intelligence.org/ontology#>
+      SELECT ?company ?companyName ?currentSolution ?competitor ?renewal ?advantages
+      WHERE {
+        ?company a sales:Organization ;
+                 sales:hasName ?companyName .
+        OPTIONAL { ?company sales:hasCurrentSolution ?currentSolution }
+        OPTIONAL { ?company sales:hasCompetitor ?competitor }
+        OPTIONAL { ?company sales:hasContractRenewal ?renewal }
+        OPTIONAL { ?company sales:hasCompetitiveAdvantage ?advantages }
+      }
+
+template_content: |
+  # Target Companies Report
+  Generated: {{generation_date}}
+
+  ---
+
+  ## Executive Summary
+  Identified {{top_companies.length}} high-priority target companies for outreach.
+
+  ---
+
+  ## Target Companies Section
+
+  {{#each top_companies}}
+  ### {{@index}}. {{name}}
+
+  **Priority Score:** {{score}}/100 | **Industry:** {{industry}}
+
+  #### Company Intelligence
+  - **Revenue:** ${{#if revenue}}{{revenue}}{{else}}N/A{{/if}}
+  - **Employees:** {{#if employees}}{{employees}}{{else}}N/A{{/if}}
+  - **Technology Stack:** {{#if ../pain_points}}
+    {{#each ../pain_points}}
+      {{#if (eq companyName ../name)}}{{techStack}}{{/if}}
+    {{/each}}
+  {{else}}N/A{{/if}}
+  - **Recent Activity:** {{#if ../pain_points}}
+    {{#each ../pain_points}}
+      {{#if (eq companyName ../name)}}{{recentActivity}}{{/if}}
+    {{/each}}
+  {{else}}N/A{{/if}}
+  - **Pain Points/Triggers:** {{#if ../pain_points}}
+    {{#each ../pain_points}}
+      {{#if (eq companyName ../name)}}{{painPoint}}{{/if}}
+    {{/each}}
+  {{else}}N/A{{/if}}
+
+  #### Key Attendees & Profiles
+
+  {{#if ../decision_makers}}
+  **Decision Makers:**
+  {{#each ../decision_makers}}
+    {{#if (eq companyName ../name)}}
+  - **{{personName}}** - {{title}}
+    - LinkedIn: {{#if linkedin}}[Profile]({{linkedin}}){{else}}N/A{{/if}}
+    - Contact Preference: {{#if contactPref}}{{contactPref}}{{else}}LinkedIn{{/if}}
+    - Interests: {{#if interests}}{{interests}}{{else}}N/A{{/if}}
+    - Recent Activity: {{#if recentActivity}}{{recentActivity}}{{else}}N/A{{/if}}
+    {{/if}}
+  {{/each}}
+  {{/if}}
+
+  {{#if ../influencers}}
+  **Influencers:**
+  {{#each ../influencers}}
+    {{#if (eq companyName ../name)}}
+  - **{{influencerName}}** - {{title}}
+    - Department: {{#if department}}{{department}}{{else}}N/A{{/if}}
+    - Decision Influence: {{#if influence}}{{influence}}%{{else}}N/A{{/if}}
+    - Previous Interactions: {{#if interactions}}{{interactions}}{{else}}None{{/if}}
+    {{/if}}
+  {{/each}}
+  {{/if}}
+
+  #### Historical Contact Summary
+
+  {{#if ../contact_history}}
+  {{#each ../contact_history}}
+    {{#if (eq companyName ../name)}}
+  - **Total Touchpoints (12mo):** {{#if touchpoints}}{{touchpoints}}{{else}}0{{/if}}
+  - **Last Contact:** {{#if lastContact}}{{lastContact}}{{else}}Never{{/if}} {{#if salesRep}}by {{salesRep}}{{/if}}
+  - **Previous Response Rate:** {{#if responseRate}}{{responseRate}}%{{else}}N/A{{/if}}
+  - **Notes/Context:** {{#if notes}}{{notes}}{{else}}No notes available{{/if}}
+  - **Relationship Temperature:** {{#if temperature}}{{temperature}}{{else}}Cold{{/if}}
+    {{/if}}
+  {{/each}}
+  {{else}}
+  No contact history available.
+  {{/if}}
+
+  #### Competitive Intelligence
+
+  {{#if ../competitive_info}}
+  {{#each ../competitive_info}}
+    {{#if (eq companyName ../name)}}
+  - **Current Solutions:** {{#if currentSolution}}{{currentSolution}}{{else}}Unknown{{/if}}
+  - **Competitors:** {{#if competitor}}{{competitor}}{{else}}N/A{{/if}}
+  - **Contract Renewal:** {{#if renewal}}{{renewal}}{{else}}Unknown{{/if}}
+  - **Competitive Advantages:** {{#if advantages}}{{advantages}}{{else}}To be determined{{/if}}
+    {{/if}}
+  {{/each}}
+  {{else}}
+  No competitive intelligence available.
+  {{/if}}
+
+  ---
+
+  {{/each}}
+
+  ## Next Steps
+
+  1. Prioritize outreach to companies with scores above 80
+  2. Leverage warm relationships where temperature is "Hot" or "Warm"
+  3. Focus on companies with upcoming contract renewals
+  4. Tailor messaging to identified pain points and technology stacks
+
+llm_instructions: |
+  When enhancing this report:
+  1. Make the language professional but engaging
+  2. Highlight actionable insights
+  3. Emphasize competitive advantages
+  4. Keep company-specific details intact
+  5. Add strategic recommendations where appropriate
+
+post_processing:
+  enhance_with_llm: false
+  style_guide: "Professional B2B sales report"
+  word_limit: 3000
+  include_sources: true

@@ -1,0 +1,92 @@
+id: "sales_llm_populated"
+name: "Sales Target Companies Report - LLM Populated"
+description: "Sales report template to be populated by LLM with knowledge graph data"
+template_type: report
+output_format: markdown
+
+# SPARQL queries to extract data from knowledge graph
+data_queries:
+  - id: "companies_with_details"
+    description: "Get all companies with their details"
+    required: true
+    sparql_query: |
+      SELECT ?subject ?predicate ?object
+      WHERE {
+        ?subject ?predicate ?object
+      }
+
+  - id: "company_names"
+    description: "Get all company names"
+    required: true
+    sparql_query: |
+      SELECT ?name ?entity
+      WHERE {
+        ?entity hasName ?name
+      }
+
+# Template that will be sent to LLM for population
+# The LLM will replace [FIELD: xxx] placeholders with actual data
+template_content: |
+  # Target Companies Section
+
+  ## Company Template (Repeat for Top 5)
+
+  ### Company Name: [FIELD: Company Name]
+  Priority Score: [FIELD: Score]/100 | Industry: [FIELD: Industry Type]
+
+  #### Company Intelligence
+  - Revenue: $[FIELD: Revenue Range]
+  - Employees: [FIELD: Employee Count]
+  - Technology Stack: [FIELD: Tech Stack]
+  - Recent Funding/News: [FIELD: Recent Activity]
+  - Pain Points/Triggers: [FIELD: Pain Points]
+
+  #### Key Attendees & Profiles
+
+  **Decision Maker:**
+  - Name: [FIELD: Decision Maker Name]
+  - Title: [FIELD: Title]
+  - LinkedIn: [FIELD: LinkedIn URL]
+  - Contact Preference: [DROPDOWN: LinkedIn | Email | Phone]
+  - Interests: [FIELD: Interest Topics]
+  - Recent Activity: [FIELD: Recent Posts/Activity]
+
+  **Influencer:**
+  - Name: [FIELD: Influencer Name]
+  - Title: [FIELD: Influencer Title]
+  - Department: [FIELD: Department Name]
+  - Decision Influence: [FIELD: Influence Percentage]%
+  - Previous Interactions: [FIELD: Interaction History]
+
+  #### Historical Contact Summary
+  - Total Touchpoints (12mo): [FIELD: Contact Count] via [CHECKLIST: Email | Phone | Social]
+  - Last Contact: [DATE FIELD] by [FIELD: Sales Rep Name]
+  - Previous Response Rate: [FIELD: Response Rate]%
+  - Notes/Context: [TEXT AREA: Contact Notes]
+  - Relationship Temperature: [DROPDOWN: Cold | Warm | Hot]
+
+  #### Competitive Intelligence
+  - Current Solutions: [FIELD: Competitor Names]
+  - Contract Renewal: [DATE FIELD] (if known)
+  - Competitive Advantages: [FIELD: Our Advantages]
+
+llm_instructions: |
+  Based on the knowledge graph data provided:
+  1. Identify the top 5 companies by importance/relevance
+  2. For each company, populate ALL fields with actual data from the triples
+  3. If a field's data is not available, write "Not Available" or "TBD"
+  4. For Decision Makers, use actual names from the hasDecisionMaker predicates
+  5. For Pain Points, compile all hasPainPoint values for each company
+  6. For Revenue, use the hasRevenue values
+  7. For Industry, use the hasIndustry values
+  8. For Recent Activity, use hasRecentActivity values
+  9. Make educated selections for dropdown fields based on available data
+  10. Ensure all company-specific data is accurately mapped to the right company
+
+  The final report should be professional, complete, and ready for sales team use.
+
+post_processing:
+  enhance_with_llm: true
+  style_guide: "Professional B2B sales intelligence report"
+  word_limit: 2500
+  include_sources: false

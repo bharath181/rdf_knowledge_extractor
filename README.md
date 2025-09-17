@@ -10,7 +10,14 @@ A high-performance Rust application that extracts structured RDF triples from do
 - **Configurable Extraction**: YAML/JSON configuration for questions and schemas
 - **High Performance**: Async Rust implementation with concurrent processing
 - **Validation**: Built-in RDF triple validation and schema checking
-- **Targeted Extraction**: Extract only information relevant to predefined questions
+- **LLM-Powered Template Population**: Templates populated via LLM intelligence
+- **Knowledge Graph Storage**: Persistent RDF triple storage and export
+
+## Current Limitations
+
+- **SPARQL Queries**: Simplified implementation - LLM does most query processing
+- **Scalability**: Current approach efficient for small knowledge graphs only
+- **Query Complexity**: Advanced SPARQL features not yet supported
 
 ## Architecture
 

@@ -67,21 +67,23 @@ export VLLM_MODEL="Qwen/Qwen2.5-32B-Instruct"
 export VLLM_API_KEY="your-api-key"  # Optional
 ```
 
-## What Happens
+## What Actually Happens
 
-### Phase 1: Knowledge Extraction
+### Phase 1: Knowledge Extraction (WORKING)
 1. Reads source documents from `source-data/`
 2. Sends documents + extraction questions to LLM
 3. LLM returns structured RDF triples
 4. Saves triples to knowledge graph database
 5. Exports to N-Triples format for inspection
 
-### Phase 2: Template Population
+### Phase 2: Template Population (BROKEN SPARQL)
 1. Loads the knowledge graph from Phase 1
-2. Executes SPARQL queries to extract relevant data
-3. Sends template + extracted data to LLM
-4. LLM intelligently fills all template placeholders
+2. **IGNORES SPARQL queries** - dumps ALL triples to LLM instead
+3. Sends template + ALL raw triples to LLM
+4. **LLM does all the work**: parsing, filtering, grouping, populating
 5. Saves the completed sales report
+
+**Note**: SPARQL queries in templates are currently decorative. The LLM manually processes all data rather than using a proper query engine.
 
 ## Expected Output
 
